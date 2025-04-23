@@ -591,7 +591,7 @@ tls13_SetupClientHello(sslSocket *ss, sslClientHelloType chType)
         return SECFailure;
     }
 
-    /* Select the first enabled group.
+    /* Select the first supported enabled group.
      * TODO(ekr@rtfm.com): be smarter about offering the group
      * that the other side negotiated if we are resuming. */
     PORT_Assert(PR_CLIST_IS_EMPTY(&ss->ephemeralKeyPairs));
@@ -601,7 +601,7 @@ tls13_SetupClientHello(sslSocket *ss, sslClientHelloType chType)
         }
         rv = tls13_AddKeyShare(ss, ss->namedGroupPreferences[i]);
         if (rv != SECSuccess) {
-            return SECFailure;
+            continue;
         }
         if (++numShares > ss->additionalShares) {
             break;
