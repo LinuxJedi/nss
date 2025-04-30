@@ -72,6 +72,46 @@ ssl_CreateStaticECDHEKeyPair(void *arg)
     return PR_SUCCESS;
 }
 
+static PRStatus
+ssl_TestKeyPair(void *arg)
+{
+    const sslSocketAndGroupArg *typed_arg = (sslSocketAndGroupArg *)arg;
+    const sslNamedGroupDef *group = typed_arg->group;
+    const sslSocket *ss = typed_arg->ss;
+    unsigned int i = group - ssl_named_groups;
+    SECStatus rv;
+
+    PORT_Assert(i < SSL_NAMED_GROUP_COUNT);
+    switch (group->keaType) {
+        case ssl_kea_ecdh_hybrid:
+            rv = ssl_CreateECDHEphemeralKeyPair(ss, group,
+                                                &gECDHEKeyPairs[i].keyPair);
+            break;
+        case ssl_kea_ecdh:
+            rv = ssl_CreateECDHEphemeralKeyPair(ss, group,
+                                                &gECDHEKeyPairs[i].keyPair);
+            break;
+        case ssl_kea_dh: {
+            const ssl3DHParams *params = ssl_GetDHEParams(group);
+            PORT_Assert(params->name != ssl_grp_ffdhe_custom);
+            rv = ssl_CreateDHEKeyPair(group, params,
+                                                &gECDHEKeyPairs[i].keyPair);
+            break;
+        }
+        default:
+            PORT_Assert(0);
+            PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
+            return SECFailure;
+    }
+    if (rv != SECSuccess) {
+        gECDHEKeyPairs[i].keyPair = NULL;
+        SSL_TRC(5, ("%d: SSL[-]: disabling group %d",
+                    SSL_GETPID(), group->name));
+    }
+
+    return PR_SUCCESS;
+}
+
 void
 ssl_FilterSupportedGroups(sslSocket *ss)
 {
@@ -111,7 +151,7 @@ ssl_FilterSupportedGroups(sslSocket *ss)
 
         arg.group = group;
         prv = PR_CallOnceWithArg(&gECDHEKeyPairs[index].once,
-                                 ssl_CreateStaticECDHEKeyPair,
+                                 ssl_TestKeyPair,
                                  (void *)&arg);
         PORT_Assert(prv == PR_SUCCESS);
         if (prv != PR_SUCCESS) {

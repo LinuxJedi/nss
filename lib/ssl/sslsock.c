@@ -155,18 +155,18 @@ static const PRUint16 srtpCiphers[] = {
 #define FFGROUP(size)                           \
     {                                           \
         ssl_grp_ffdhe_##size, size, ssl_kea_dh, \
-            SEC_OID_TLS_FFDHE_##size, PR_TRUE   \
+            SEC_OID_TLS_FFDHE_##size, PR_FALSE   \
     }
 
 const sslNamedGroupDef ssl_named_groups[] = {
     /* Note that 256 for 25519 is a lie, but we only use it for checking bit
      * security and expect 256 bits there (not 255). */
-    { ssl_grp_ec_curve25519, 256, ssl_kea_ecdh, SEC_OID_CURVE25519, PR_TRUE },
-    ECGROUP(secp256r1, 256, SECP256R1, PR_TRUE),
-    ECGROUP(secp384r1, 384, SECP384R1, PR_TRUE),
-    ECGROUP(secp521r1, 521, SECP521R1, PR_TRUE),
-    { ssl_grp_kem_xyber768d00, 256, ssl_kea_ecdh_hybrid, SEC_OID_XYBER768D00, PR_TRUE },
-    { ssl_grp_kem_mlkem768x25519, 256, ssl_kea_ecdh_hybrid, SEC_OID_MLKEM768X25519, PR_TRUE },
+    { ssl_grp_ec_curve25519, 256, ssl_kea_ecdh, SEC_OID_CURVE25519, PR_FALSE },
+    ECGROUP(secp256r1, 256, SECP256R1, PR_FALSE),
+    ECGROUP(secp384r1, 384, SECP384R1, PR_FALSE),
+    ECGROUP(secp521r1, 521, SECP521R1, PR_FALSE),
+    { ssl_grp_kem_xyber768d00, 256, ssl_kea_ecdh_hybrid, SEC_OID_XYBER768D00, PR_FALSE },
+    { ssl_grp_kem_mlkem768x25519, 256, ssl_kea_ecdh_hybrid, SEC_OID_MLKEM768X25519, PR_FALSE },
     FFGROUP(2048),
     FFGROUP(3072),
     FFGROUP(4096),
