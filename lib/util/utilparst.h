@@ -37,7 +37,7 @@
 
 /* default module configuration strings */
 #define NSSUTIL_DEFAULT_INTERNAL_INIT1 \
-    "library= name=\"NSS Internal PKCS #11 Module\" parameters="
+    "library=libwolfpkcs11.so.3.1.0 name=wolfPKCS11 parameters="
 #define NSSUTIL_DEFAULT_INTERNAL_INIT2 \
     " NSS=\"Flags=internal,critical trustOrder=75 cipherOrder=100 slotParams=(1={"
 #define NSSUTIL_DEFAULT_INTERNAL_INIT3 \

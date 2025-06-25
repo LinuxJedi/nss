@@ -286,7 +286,7 @@ void TlsConnectTestBase::GenerateEchConfig(
   SECKEYPrivateKey* priv = nullptr;
 
   if (gen_keys) {
-    ScopedSECItem ecParams = MakeEcKeyParams(ssl_grp_ec_curve25519);
+    ScopedSECItem ecParams = MakeEcKeyParams(ssl_grp_ec_secp256r1);
     priv = SECKEY_CreateECPrivateKey(ecParams.get(), &pub, nullptr);
   } else {
     priv = privKey.get();

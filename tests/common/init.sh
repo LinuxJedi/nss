@@ -342,8 +342,8 @@ if [ -z "${INIT_SOURCED}" -o "${INIT_SOURCED}" != "TRUE" ]; then
       outdir="$2"
       OUTFILE="${outdir}/pkcs11.txt"
       cat > "$OUTFILE" << ++EOF++
-library=
-name=NSS Internal PKCS #11 Module
+library=libwolfpkcs11.so.3.1.0
+name=wolfPKCS11
 parameters=configdir='./client' certPrefix='' keyPrefix='' secmod='secmod.db' flags= updatedir='' updateCertPrefix='' updateKeyPrefix='' updateid='' updateTokenDescription=''
 NSS=Flags=internal,critical trustOrder=75 cipherOrder=100 slotParams=(1={slotFlags=[RSA,DSA,DH,RC2,RC4,DES,RANDOM,SHA1,MD5,MD2,SSL,TLS,AES,Camellia,SEED,SHA256,SHA512] askpw=any timeout=30})
 ++EOF++

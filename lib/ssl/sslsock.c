@@ -155,7 +155,7 @@ static const PRUint16 srtpCiphers[] = {
 #define FFGROUP(size)                           \
     {                                           \
         ssl_grp_ffdhe_##size, size, ssl_kea_dh, \
-            SEC_OID_TLS_FFDHE_##size, PR_FALSE   \
+            SEC_OID_TLS_FFDHE_##size, PR_FALSE  \
     }
 
 const sslNamedGroupDef ssl_named_groups[] = {

@@ -708,6 +708,9 @@ void TlsAgent::CheckKEA(SSLKEAType kea, SSLNamedGroup kea_group,
                         size_t kea_size) const {
   EXPECT_EQ(STATE_CONNECTED, state_);
   EXPECT_EQ(kea, info_.keaType);
+  /* Hack because wolfPCKS11 doesn't support NSS's Curve25519 OID */
+  if (kea_group == ssl_grp_ec_curve25519)
+    kea_group = ssl_grp_ec_secp256r1;
   if (kea_size == 0) {
     switch (kea_group) {
       case ssl_grp_ec_curve25519:
