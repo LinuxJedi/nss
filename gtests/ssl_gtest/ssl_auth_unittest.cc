@@ -55,7 +55,7 @@ TEST_P(TlsConnectTls12Plus, ServerAuthRsaPss) {
   server_->SetSignatureSchemes(kSignatureSchemePss,
                                PR_ARRAY_SIZE(kSignatureSchemePss));
   Connect();
-  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_curve25519, ssl_auth_rsa_pss,
+  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_secp256r1, ssl_auth_rsa_pss,
             ssl_sig_rsa_pss_pss_sha256);
 }
 
@@ -85,7 +85,7 @@ TEST_P(TlsConnectTls12Plus, ServerAuthRsaPssNoParameters) {
   server_->SetSignatureSchemes(kSignatureSchemePss,
                                PR_ARRAY_SIZE(kSignatureSchemePss));
   Connect();
-  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_curve25519, ssl_auth_rsa_pss,
+  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_secp256r1, ssl_auth_rsa_pss,
             ssl_sig_rsa_pss_pss_sha256);
 }
 
@@ -1000,7 +1000,7 @@ TEST_P(TlsConnectTls12, ServerAuthCheckSigAlg) {
   EXPECT_EQ(3U, buffer.data()[0]) << "curve_type == named_curve";
   uint32_t tmp;
   EXPECT_TRUE(buffer.Read(1, 2, &tmp)) << "read NamedCurve";
-  EXPECT_EQ(ssl_grp_ec_curve25519, tmp);
+  EXPECT_EQ(ssl_grp_ec_secp256r1, tmp);
   EXPECT_TRUE(buffer.Read(3, 1, &tmp)) << " read ECPoint";
   CheckSigScheme(capture_ske, 4 + tmp, client_, ssl_sig_rsa_pss_rsae_sha256,
                  1024);
@@ -1309,7 +1309,7 @@ static SSLNamedGroup NamedGroupForEcdsa384(uint16_t version) {
   if (version <= SSL_LIBRARY_VERSION_TLS_1_1) {
     return ssl_grp_ec_secp384r1;
   }
-  return ssl_grp_ec_curve25519;
+  return ssl_grp_ec_secp256r1;
 }
 
 // When signature algorithms match up, this should connect successfully; even
@@ -1885,7 +1885,7 @@ TEST_P(TlsConnectTls12Plus, MisconfiguredCertScheme) {
 // In TLS 1.2, disabling an EC group causes ECDSA to be invalid.
 TEST_P(TlsConnectTls12, Tls12CertDisabledGroup) {
   Reset(TlsAgent::kServerEcdsa256);
-  static const std::vector<SSLNamedGroup> k25519 = {ssl_grp_ec_curve25519};
+  static const std::vector<SSLNamedGroup> k25519 = {ssl_grp_ec_secp256r1};
   server_->ConfigNamedGroups(k25519);
   ConnectExpectAlert(server_, kTlsAlertHandshakeFailure);
   server_->CheckErrorCode(SSL_ERROR_NO_CYPHER_OVERLAP);
@@ -1895,7 +1895,7 @@ TEST_P(TlsConnectTls12, Tls12CertDisabledGroup) {
 // In TLS 1.3, ECDSA configuration only depends on the signature scheme.
 TEST_P(TlsConnectTls13, Tls13CertDisabledGroup) {
   Reset(TlsAgent::kServerEcdsa256);
-  static const std::vector<SSLNamedGroup> k25519 = {ssl_grp_ec_curve25519};
+  static const std::vector<SSLNamedGroup> k25519 = {ssl_grp_ec_secp256r1};
   server_->ConfigNamedGroups(k25519);
   Connect();
 }
@@ -2030,7 +2030,7 @@ class TlsSignatureSchemeConfiguration
     EnsureTlsSetup();
     configPeer->SetSignatureSchemes(&signature_scheme_, 1);
     Connect();
-    CheckKeys(ssl_kea_ecdh, ssl_grp_ec_curve25519, auth_type_,
+    CheckKeys(ssl_kea_ecdh, ssl_grp_ec_secp256r1, auth_type_,
               signature_scheme_);
   }
 
@@ -2065,7 +2065,7 @@ TEST_P(TlsSignatureSchemeConfiguration, SignatureSchemeConfigBoth) {
   client_->SetSignatureSchemes(&signature_scheme_, 1);
   server_->SetSignatureSchemes(&signature_scheme_, 1);
   Connect();
-  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_curve25519, auth_type_, signature_scheme_);
+  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_secp256r1, auth_type_, signature_scheme_);
 }
 
 class Tls12CertificateRequestReplacer : public TlsHandshakeFilter {

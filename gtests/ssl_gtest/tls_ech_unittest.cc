@@ -181,7 +181,7 @@ class TlsConnectStreamTls13Ech : public TlsConnectTestBase {
     static const std::vector<HpkeSymmetricSuite> kSuites = {
         {HpkeKdfHkdfSha256, HpkeAeadAes128Gcm}};
 
-    ScopedSECItem ecParams = MakeEcKeyParams(ssl_grp_ec_curve25519);
+    ScopedSECItem ecParams = MakeEcKeyParams(ssl_grp_ec_secp256r1);
     ScopedSECKEYPublicKey pub;
     ScopedSECKEYPrivateKey priv;
     SECKEYPublicKey* pub_p = nullptr;
@@ -1085,7 +1085,7 @@ TEST_F(TlsConnectStreamTls13, EchAcceptWithExternalPsk) {
   Handshake();
   CheckConnected();
   SendReceive();
-  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_curve25519, ssl_auth_psk, ssl_sig_none);
+  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_secp256r1, ssl_auth_psk, ssl_sig_none);
   // The PSK extension is present in CHOuter.
   ASSERT_TRUE(filter->captured());
 
