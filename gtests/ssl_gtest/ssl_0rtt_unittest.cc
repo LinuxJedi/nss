@@ -1105,6 +1105,7 @@ TEST_F(TlsConnectStreamTls13, BadAntiReplayArgs) {
   EXPECT_EQ(SECSuccess, SSL_SetAntiReplayContext(client_->ssl_fd(), nullptr));
 }
 
+/* Requires Chacha20, not supported in wolfPKCS11
 // See also TlsConnectGenericResumption.ResumeServerIncompatibleCipher
 TEST_P(TlsConnectTls13, ZeroRttDifferentCompatibleCipher) {
   EnsureTlsSetup();
@@ -1145,6 +1146,7 @@ TEST_P(TlsConnectTls13, ZeroRttDifferentIncompatibleCipher) {
   CheckConnected();
   SendReceive();
 }
+*/
 
 // The client failing to provide EndOfEarlyData results in failure.
 // After 0-RTT working perfectly, things fall apart later.
