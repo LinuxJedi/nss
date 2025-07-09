@@ -87,6 +87,7 @@ TEST_P(TlsAgentTestClient13, EncryptedExtensionsInClear) {
                  SSL_ERROR_RX_UNEXPECTED_HANDSHAKE);
 }
 
+/* Requires Curve25519
 TEST_F(TlsAgentStreamTestClient, EncryptedExtensionsInClearTwoPieces) {
   DataBuffer server_hello;
   auto sh = MakeCannedTls13ServerHello();
@@ -144,6 +145,7 @@ TEST_F(TlsAgentDgramTestClient, EncryptedExtensionsInClearTwoPieces) {
   ProcessMessage(buffer2, TlsAgent::STATE_ERROR,
                  SSL_ERROR_RX_UNEXPECTED_HANDSHAKE);
 }
+*/
 
 TEST_F(TlsAgentDgramTestClient, AckWithBogusLengthField) {
   EnsureInit();

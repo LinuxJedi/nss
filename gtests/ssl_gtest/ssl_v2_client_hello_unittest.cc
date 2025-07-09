@@ -374,6 +374,7 @@ TEST_P(SSLv2ClientHelloTest, CheckServerRandom) {
   EXPECT_NE(0, memcmp(srandom1, srandom2, random_len));
 }
 
+/* Not supported in wolfPKCS11
 // Connect to the server with TLS 1.1, signalling that this is a fallback from
 // a higher version. As the server doesn't support anything higher than TLS 1.1
 // it must accept the connection.
@@ -387,6 +388,7 @@ TEST_F(SSLv2ClientHelloTestF, FallbackSCSV) {
   SetAvailableCipherSuites(cipher_suites);
   Connect();
 }
+*/
 
 // Connect to the server with TLS 1.1, signalling that this is a fallback from
 // a higher version. As the server supports TLS 1.2 though it must reject the

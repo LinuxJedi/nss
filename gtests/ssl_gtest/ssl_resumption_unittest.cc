@@ -1092,6 +1092,7 @@ TEST_F(TlsConnectTest, TestTls13ResumptionDowngrade) {
   CheckKeys();
 }
 
+/* Requires Chacha20, wolfPKCS11 doesn't have this
 TEST_F(TlsConnectTest, TestTls13ResumptionForcedDowngrade) {
   ConfigureSessionCache(RESUME_BOTH, RESUME_TICKET);
   ConfigureVersion(SSL_LIBRARY_VERSION_TLS_1_3);
@@ -1138,6 +1139,7 @@ TEST_F(TlsConnectTest, TestTls13ResumptionForcedDowngrade) {
   client_->CheckErrorCode(SSL_ERROR_RX_UNEXPECTED_APPLICATION_DATA);
   server_->CheckErrorCode(SSL_ERROR_RX_UNEXPECTED_RECORD_TYPE);
 }
+*/
 
 TEST_P(TlsConnectGenericResumption, ReConnectTicket) {
   ConfigureSessionCache(RESUME_BOTH, RESUME_BOTH);

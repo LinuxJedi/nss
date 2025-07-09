@@ -595,6 +595,7 @@ static size_t ExpectedCbcLen(size_t in, size_t hmac = 20, size_t block = 16) {
   return ((in + hmac + (block - 1)) / block) * block;
 }
 
+/* TLS v1.0 not supported in wolfPKCS11
 TEST_F(TlsConnectTest, OneNRecordSplitting) {
   ConfigureVersion(SSL_LIBRARY_VERSION_TLS_1_0);
   EnsureTlsSetup();
@@ -609,6 +610,7 @@ TEST_F(TlsConnectTest, OneNRecordSplitting) {
   EXPECT_EQ(ExpectedCbcLen(16384), records->record(1).buffer.len());
   EXPECT_EQ(ExpectedCbcLen(20), records->record(2).buffer.len());
 }
+*/
 
 // We can't test for randomness easily here, but we can test that we don't
 // produce a zero value, or produce the same value twice.  There are 5 values
