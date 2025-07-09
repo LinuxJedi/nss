@@ -170,6 +170,7 @@ TEST_P(TlsDowngradeTest, TlsDowngradeSentinelTest) {
   }
 }
 
+/* Not supported with wolfPKCS11
 // TLS 1.1 clients do not check the random values, so we should
 // instead get a handshake failure alert from the server.
 TEST_F(TlsConnectTest, TestDowngradeDetectionToTls10) {
@@ -185,6 +186,7 @@ TEST_F(TlsConnectTest, TestDowngradeDetectionToTls10) {
   server_->CheckErrorCode(SSL_ERROR_BAD_HANDSHAKE_HASH_VALUE);
   client_->CheckErrorCode(SSL_ERROR_DECRYPT_ERROR_ALERT);
 }
+*/
 
 TEST_F(TlsConnectTest, TestFallbackFromTls12) {
   client_->SetOption(SSL_ENABLE_HELLO_DOWNGRADE_CHECK, PR_TRUE);

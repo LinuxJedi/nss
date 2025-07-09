@@ -572,6 +572,7 @@ TEST_P(TlsConnectDatagram, BlockedWrite) {
   SendReceive();
 }
 
+/* SSLv3 not supported in wolfPKCS11
 TEST_F(TlsConnectTest, ConnectSSLv3) {
   ConfigureVersion(SSL_LIBRARY_VERSION_3_0);
   EnableOnlyStaticRsaCiphers();
@@ -587,6 +588,7 @@ TEST_F(TlsConnectTest, ConnectSSLv3ClientAuth) {
   Connect();
   CheckKeys(ssl_kea_rsa, ssl_grp_none, ssl_auth_rsa_decrypt, ssl_sig_none);
 }
+*/
 
 static size_t ExpectedCbcLen(size_t in, size_t hmac = 20, size_t block = 16) {
   // MAC-then-Encrypt expansion formula:

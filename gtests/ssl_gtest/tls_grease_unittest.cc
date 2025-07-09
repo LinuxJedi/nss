@@ -415,6 +415,7 @@ TEST_F(TlsConnectStreamTls13, GreasePsk) {
   CheckKeys(ssl_kea_ecdh, ssl_grp_ec_curve25519, ssl_auth_psk, ssl_sig_none);
 }
 
+/* Required Curve25519, not supported in wolfPKCS11
 // Test that ECH and GREASE work together successfully
 TEST_F(TlsConnectStreamTls13, GreaseAndECH) {
   EnsureTlsSetup();
@@ -425,6 +426,7 @@ TEST_F(TlsConnectStreamTls13, GreaseAndECH) {
             SECSuccess);
   Connect();
 }
+*/
 
 // Test that TLS12 Server handles Client GREASE correctly
 TEST_F(TlsConnectTest, GreaseTLS12Server) {

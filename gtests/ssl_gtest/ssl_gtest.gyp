@@ -54,7 +54,6 @@
         'test_io.cc',
         'tls_agent.cc',
         'tls_connect.cc',
-        'tls_ech_unittest.cc',
         'tls_filter.cc',
         'tls_grease_unittest.cc',
         'tls_hkdf_unittest.cc',

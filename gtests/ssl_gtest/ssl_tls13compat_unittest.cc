@@ -214,6 +214,7 @@ TEST_F(Tls13CompatTest, EnabledHrrZeroRtt) {
   CheckForCompatHandshake();
 }
 
+/* ECH not supported in wolfPKCS11
 TEST_F(Tls13CompatTest, EnabledAcceptedEch) {
   EnsureTlsSetup();
   SetupEch(client_, server_);
@@ -236,6 +237,7 @@ TEST_F(Tls13CompatTest, EnabledRejectedEch) {
   // Reset expectations for the TlsAgent dtor.
   server_->ExpectReceiveAlert(kTlsAlertCloseNotify, kTlsAlertWarning);
 }
+*/
 
 class TlsSessionIDEchoFilter : public TlsHandshakeFilter {
  public:

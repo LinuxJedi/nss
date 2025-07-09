@@ -202,6 +202,7 @@ TEST_F(AeadTest, AeadAes256Gcm) {
   EncryptDecrypt(ctx, kCiphertextAes256Gcm, sizeof(kCiphertextAes256Gcm));
 }
 
+/* Not supported in wolfPKCS11
 TEST_F(AeadTest, AeadChaCha20Poly1305) {
   SSLAeadContext *ctxInit = nullptr;
   ASSERT_EQ(
@@ -214,5 +215,6 @@ TEST_F(AeadTest, AeadChaCha20Poly1305) {
   EncryptDecrypt(ctx, kCiphertextChaCha20Poly1305,
                  sizeof(kCiphertextChaCha20Poly1305));
 }
+*/
 
 }  // namespace nss_test
