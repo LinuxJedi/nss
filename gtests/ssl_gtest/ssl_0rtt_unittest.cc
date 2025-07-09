@@ -1126,6 +1126,7 @@ TEST_P(TlsConnectTls13, ZeroRttDifferentCompatibleCipher) {
   CheckConnected();
   SendReceive();
 }
+*/
 
 // See also TlsConnectGenericResumption.ResumeServerIncompatibleCipher
 TEST_P(TlsConnectTls13, ZeroRttDifferentIncompatibleCipher) {
@@ -1135,7 +1136,7 @@ TEST_P(TlsConnectTls13, ZeroRttDifferentIncompatibleCipher) {
   client_->Set0RttEnabled(true);
   server_->Set0RttEnabled(true);
   // Resumption is rejected because the hash is different.
-  server_->EnableSingleCipher(TLS_CHACHA20_POLY1305_SHA256);
+  server_->EnableSingleCipher(TLS_AES_128_GCM_SHA256);
   ExpectResumption(RESUME_NONE);
 
   StartConnect();
@@ -1146,7 +1147,6 @@ TEST_P(TlsConnectTls13, ZeroRttDifferentIncompatibleCipher) {
   CheckConnected();
   SendReceive();
 }
-*/
 
 // The client failing to provide EndOfEarlyData results in failure.
 // After 0-RTT working perfectly, things fall apart later.
