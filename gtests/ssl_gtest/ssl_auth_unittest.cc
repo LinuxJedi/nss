@@ -1910,6 +1910,7 @@ TEST_P(TlsConnectTls13, Tls13DsaOnlyClient) {
   client_->CheckErrorCode(SSL_ERROR_NO_SUPPORTED_SIGNATURE_ALGORITHM);
 }
 
+/* No DSA support in wolfPKCS
 TEST_P(TlsConnectTls13, Tls13DsaOnlyServer) {
   Reset(TlsAgent::kServerDsa);
   static const SSLSignatureScheme kDsa[] = {ssl_sig_dsa_sha256};
@@ -1918,6 +1919,7 @@ TEST_P(TlsConnectTls13, Tls13DsaOnlyServer) {
   server_->CheckErrorCode(SSL_ERROR_NO_SUPPORTED_SIGNATURE_ALGORITHM);
   client_->CheckErrorCode(SSL_ERROR_NO_CYPHER_OVERLAP);
 }
+*/
 
 TEST_P(TlsConnectTls13, Tls13Pkcs1OnlyClient) {
   static const SSLSignatureScheme kPkcs1[] = {ssl_sig_rsa_pkcs1_sha256};
