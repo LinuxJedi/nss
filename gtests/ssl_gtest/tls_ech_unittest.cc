@@ -427,7 +427,6 @@ TEST_P(TlsAgentEchTest, EchConfigRejectEmptyPublicName) {
   ASSERT_FALSE(filter->captured());
 }
 
-/* Not supported in wolfPKCS11
 TEST_F(TlsConnectStreamTls13, EchAcceptIgnoreSingleUnknownSuite) {
   EnsureTlsSetup();
   DataBuffer echconfig;
@@ -447,7 +446,6 @@ TEST_F(TlsConnectStreamTls13, EchAcceptIgnoreSingleUnknownSuite) {
   server_->ExpectEch();
   Connect();
 }
-*/
 
 TEST_P(TlsAgentEchTest, ApiInvalidArgs) {
   EnsureInit();
