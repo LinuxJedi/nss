@@ -590,12 +590,12 @@ TEST_F(TlsConnectTest, ConnectSSLv3ClientAuth) {
 }
 */
 
+/* TLS v1.0 not supported in wolfPKCS11
 static size_t ExpectedCbcLen(size_t in, size_t hmac = 20, size_t block = 16) {
   // MAC-then-Encrypt expansion formula:
   return ((in + hmac + (block - 1)) / block) * block;
 }
 
-/* TLS v1.0 not supported in wolfPKCS11
 TEST_F(TlsConnectTest, OneNRecordSplitting) {
   ConfigureVersion(SSL_LIBRARY_VERSION_TLS_1_0);
   EnsureTlsSetup();
