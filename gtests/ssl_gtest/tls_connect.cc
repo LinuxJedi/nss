@@ -319,7 +319,6 @@ void TlsConnectTestBase::SetupEch(std::shared_ptr<TlsAgent>& client,
   ScopedSECKEYPrivateKey priv;
   DataBuffer record;
   static const std::vector<HpkeSymmetricSuite> kDefaultSuites = {
-      {HpkeKdfHkdfSha256, HpkeAeadChaCha20Poly1305},
       {HpkeKdfHkdfSha256, HpkeAeadAes128Gcm}};
 
   GenerateEchConfig(kem_id, kDefaultSuites, "public.name", max_name_len, record,

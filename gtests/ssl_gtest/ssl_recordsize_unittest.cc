@@ -266,6 +266,7 @@ TEST_F(TlsConnectStreamTls13, RecordSizeCiphertextExceed) {
   server_->CheckErrorCode(SSL_ERROR_RECORD_OVERFLOW_ALERT);
 }
 
+/* wolfPKCS11 doesn't support Chacha20 poly1305 yet
 TEST_F(TlsConnectStreamTls13, ClientHelloF5Padding) {
   EnsureTlsSetup();
   ScopedPK11SlotInfo slot(PK11_GetInternalSlot());
@@ -286,6 +287,7 @@ TEST_F(TlsConnectStreamTls13, ClientHelloF5Padding) {
   // Filter removes the 4B handshake header.
   EXPECT_EQ(508UL, filter->buffer().len());
 }
+*/
 
 // This indiscriminately adds padding to application data records.
 class TlsRecordPadder : public TlsRecordFilter {

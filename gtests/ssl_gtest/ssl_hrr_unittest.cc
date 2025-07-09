@@ -910,6 +910,7 @@ TEST_P(TlsConnectTls13, RetryStatelessBadCookie) {
   client_->CheckErrorCode(SSL_ERROR_ILLEGAL_PARAMETER_ALERT);
 }
 
+/* wolfPKCS11 doesn't support Chacha20/Poly1305 yet
 // Stream because the server doesn't consume the alert and terminate.
 TEST_F(TlsConnectStreamTls13, RetryWithDifferentCipherSuite) {
   EnsureTlsSetup();
@@ -926,6 +927,7 @@ TEST_F(TlsConnectStreamTls13, RetryWithDifferentCipherSuite) {
   EXPECT_EQ(SSL_ERROR_RX_MALFORMED_SERVER_HELLO, client_->error_code());
   EXPECT_EQ(SSL_ERROR_RX_UNEXPECTED_RECORD_TYPE, server_->error_code());
 }
+*/
 
 // This tests that the second attempt at sending a ClientHello (after receiving
 // a HelloRetryRequest) is correctly retransmitted.

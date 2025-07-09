@@ -35,10 +35,7 @@ class TlsAgentEchTest : public TlsAgentStreamTestClient13 {
 static std::string kPublicName("public.name");
 
 static const std::vector<HpkeSymmetricSuite> kDefaultSuites = {
-    {HpkeKdfHkdfSha256, HpkeAeadChaCha20Poly1305},
     {HpkeKdfHkdfSha256, HpkeAeadAes128Gcm}};
-static const std::vector<HpkeSymmetricSuite> kSuiteChaCha = {
-    {HpkeKdfHkdfSha256, HpkeAeadChaCha20Poly1305}};
 static const std::vector<HpkeSymmetricSuite> kSuiteAes = {
     {HpkeKdfHkdfSha256, HpkeAeadAes128Gcm}};
 std::vector<HpkeSymmetricSuite> kBogusSuite = {
@@ -83,13 +80,6 @@ class TlsConnectStreamTls13Ech : public TlsConnectTestBase {
     ScopedSECKEYPrivateKey client_priv;
     DataBuffer server_rec;
     DataBuffer client_rec;
-    TlsConnectTestBase::GenerateEchConfig(HpkeDhKemX25519Sha256, kSuiteChaCha,
-                                          kPublicName, 100, server_rec,
-                                          server_pub, server_priv);
-    ASSERT_EQ(SECSuccess,
-              SSL_SetServerEchConfigs(server_->ssl_fd(), server_pub.get(),
-                                      server_priv.get(), server_rec.data(),
-                                      server_rec.len()));
 
     TlsConnectTestBase::GenerateEchConfig(HpkeDhKemX25519Sha256, kSuiteAes,
                                           kPublicName, 100, client_rec,
@@ -1935,7 +1925,7 @@ TEST_F(TlsConnectStreamTls13, EchRejectUnknownCriticalExtension) {
   DataBuffer crit_exts(crit_extensions, sizeof(crit_extensions));
   DataBuffer non_crit_exts(extensions, sizeof(extensions));
 
-  TlsConnectTestBase::GenerateEchConfig(HpkeDhKemX25519Sha256, kSuiteChaCha,
+  TlsConnectTestBase::GenerateEchConfig(HpkeDhKemX25519Sha256, kSuiteAes,
                                         kPublicName, 100, echconfig, pub, priv);
   echconfig.Truncate(echconfig.len() - 2);  // Eat the empty extensions.
   crit_rec.Assign(echconfig);
@@ -2029,14 +2019,6 @@ TEST_F(TlsConnectStreamTls13, EchRejectAuthCertSuccessIncompatibleRetries) {
   ScopedSECKEYPrivateKey client_priv;
   DataBuffer server_rec;
   DataBuffer client_rec;
-
-  TlsConnectTestBase::GenerateEchConfig(HpkeDhKemX25519Sha256, kSuiteChaCha,
-                                        kPublicName, 100, server_rec,
-                                        server_pub, server_priv);
-  ASSERT_EQ(SECSuccess,
-            SSL_SetServerEchConfigs(server_->ssl_fd(), server_pub.get(),
-                                    server_priv.get(), server_rec.data(),
-                                    server_rec.len()));
 
   TlsConnectTestBase::GenerateEchConfig(HpkeDhKemX25519Sha256, kSuiteAes,
                                         kPublicName, 100, client_rec,
@@ -2149,9 +2131,6 @@ TEST_F(TlsConnectStreamTls13Ech, EchMismatchHpkeCiphersRetry) {
   DataBuffer server_rec;
   DataBuffer client_rec;
 
-  TlsConnectTestBase::GenerateEchConfig(HpkeDhKemX25519Sha256, kSuiteChaCha,
-                                        kPublicName, 100, server_rec,
-                                        server_pub, server_priv);
   TlsConnectTestBase::GenerateEchConfig(HpkeDhKemX25519Sha256, kSuiteAes,
                                         kPublicName, 100, client_rec,
                                         client_pub, client_priv);
