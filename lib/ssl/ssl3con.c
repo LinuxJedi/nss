@@ -98,13 +98,13 @@ static ssl3CipherSuiteCfg cipherSuites[ssl_V3_SUITES_IMPLEMENTED] = {
    /*      cipher_suite                     policy       enabled   isPresent */
  /* Special TLS 1.3 suites. */
  { TLS_AES_128_GCM_SHA256, SSL_ALLOWED, PR_TRUE, PR_FALSE },
- { TLS_CHACHA20_POLY1305_SHA256, SSL_ALLOWED, PR_TRUE, PR_FALSE },
+ /* { TLS_CHACHA20_POLY1305_SHA256, SSL_ALLOWED, PR_TRUE, PR_FALSE }, no support in wolfpkcs11 */
  { TLS_AES_256_GCM_SHA384, SSL_ALLOWED, PR_TRUE, PR_FALSE },
 
  { TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, SSL_ALLOWED, PR_TRUE, PR_FALSE},
  { TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,   SSL_ALLOWED, PR_TRUE, PR_FALSE},
- { TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, SSL_ALLOWED, PR_TRUE, PR_FALSE},
- { TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,   SSL_ALLOWED, PR_TRUE, PR_FALSE},
+ /* { TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, SSL_ALLOWED, PR_TRUE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,   SSL_ALLOWED, PR_TRUE, PR_FALSE}, no support in wolfpkcs11 */
  { TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, SSL_ALLOWED, PR_TRUE, PR_FALSE},
  { TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,   SSL_ALLOWED, PR_TRUE, PR_FALSE},
    /* TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA is out of order to work around
@@ -118,59 +118,59 @@ static ssl3CipherSuiteCfg cipherSuites[ssl_V3_SUITES_IMPLEMENTED] = {
  { TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,      SSL_ALLOWED, PR_TRUE, PR_FALSE},
  { TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, SSL_ALLOWED, PR_FALSE, PR_FALSE},
  { TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,   SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA,   SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA,     SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_ECDHE_ECDSA_WITH_RC4_128_SHA,        SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_ECDHE_RSA_WITH_RC4_128_SHA,          SSL_ALLOWED, PR_FALSE, PR_FALSE},
+ /* { TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA,   SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA,     SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_ECDHE_ECDSA_WITH_RC4_128_SHA,        SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_ECDHE_RSA_WITH_RC4_128_SHA,          SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
 
  { TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,     SSL_ALLOWED, PR_TRUE,  PR_FALSE},
- { TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256,SSL_ALLOWED,PR_TRUE,  PR_FALSE},
- { TLS_DHE_DSS_WITH_AES_128_GCM_SHA256,     SSL_ALLOWED, PR_FALSE, PR_FALSE},
+ /* { TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256,SSL_ALLOWED,PR_TRUE,  PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_DHE_DSS_WITH_AES_128_GCM_SHA256,     SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
  { TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,     SSL_ALLOWED, PR_TRUE,  PR_FALSE},
- { TLS_DHE_DSS_WITH_AES_256_GCM_SHA384,     SSL_ALLOWED, PR_FALSE, PR_FALSE},
+ /* { TLS_DHE_DSS_WITH_AES_256_GCM_SHA384,     SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
  { TLS_DHE_RSA_WITH_AES_128_CBC_SHA,        SSL_ALLOWED, PR_TRUE,  PR_FALSE},
- { TLS_DHE_DSS_WITH_AES_128_CBC_SHA,        SSL_ALLOWED, PR_TRUE,  PR_FALSE},
+ /* { TLS_DHE_DSS_WITH_AES_128_CBC_SHA,        SSL_ALLOWED, PR_TRUE,  PR_FALSE}, no support in wolfpkcs11 */
  { TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,     SSL_ALLOWED, PR_TRUE,  PR_FALSE},
- { TLS_DHE_DSS_WITH_AES_128_CBC_SHA256,     SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,   SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA,   SSL_ALLOWED, PR_FALSE, PR_FALSE},
+ /* { TLS_DHE_DSS_WITH_AES_128_CBC_SHA256,     SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,   SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA,   SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
  { TLS_DHE_RSA_WITH_AES_256_CBC_SHA,        SSL_ALLOWED, PR_TRUE,  PR_FALSE},
- { TLS_DHE_DSS_WITH_AES_256_CBC_SHA,        SSL_ALLOWED, PR_TRUE,  PR_FALSE},
+ /* { TLS_DHE_DSS_WITH_AES_256_CBC_SHA,        SSL_ALLOWED, PR_TRUE,  PR_FALSE}, no support in wolfpkcs11 */
  { TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,     SSL_ALLOWED, PR_TRUE,  PR_FALSE},
- { TLS_DHE_DSS_WITH_AES_256_CBC_SHA256,     SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,   SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA,   SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA,       SSL_ALLOWED, PR_TRUE,  PR_FALSE},
- { TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA,       SSL_ALLOWED, PR_TRUE,  PR_FALSE},
- { TLS_DHE_DSS_WITH_RC4_128_SHA,            SSL_ALLOWED, PR_FALSE, PR_FALSE},
+ /* { TLS_DHE_DSS_WITH_AES_256_CBC_SHA256,     SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,   SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA,   SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA,       SSL_ALLOWED, PR_TRUE,  PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA,       SSL_ALLOWED, PR_TRUE,  PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_DHE_DSS_WITH_RC4_128_SHA,            SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
 
  { TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA,     SSL_ALLOWED, PR_FALSE, PR_FALSE},
  { TLS_ECDH_RSA_WITH_AES_128_CBC_SHA,       SSL_ALLOWED, PR_FALSE, PR_FALSE},
  { TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA,     SSL_ALLOWED, PR_FALSE, PR_FALSE},
  { TLS_ECDH_RSA_WITH_AES_256_CBC_SHA,       SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA,    SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA,      SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_ECDH_ECDSA_WITH_RC4_128_SHA,         SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_ECDH_RSA_WITH_RC4_128_SHA,           SSL_ALLOWED, PR_FALSE, PR_FALSE},
+ /* { TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA,    SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA,      SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_ECDH_ECDSA_WITH_RC4_128_SHA,         SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_ECDH_RSA_WITH_RC4_128_SHA,           SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
 
  /* RSA */
  { TLS_RSA_WITH_AES_128_GCM_SHA256,         SSL_ALLOWED, PR_TRUE,  PR_FALSE},
  { TLS_RSA_WITH_AES_256_GCM_SHA384,         SSL_ALLOWED, PR_TRUE,  PR_FALSE},
  { TLS_RSA_WITH_AES_128_CBC_SHA,            SSL_ALLOWED, PR_TRUE,  PR_FALSE},
  { TLS_RSA_WITH_AES_128_CBC_SHA256,         SSL_ALLOWED, PR_TRUE,  PR_FALSE},
- { TLS_RSA_WITH_CAMELLIA_128_CBC_SHA,       SSL_ALLOWED, PR_FALSE, PR_FALSE},
+ /* { TLS_RSA_WITH_CAMELLIA_128_CBC_SHA,       SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
  { TLS_RSA_WITH_AES_256_CBC_SHA,            SSL_ALLOWED, PR_TRUE,  PR_FALSE},
  { TLS_RSA_WITH_AES_256_CBC_SHA256,         SSL_ALLOWED, PR_TRUE,  PR_FALSE},
- { TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,       SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_RSA_WITH_SEED_CBC_SHA,               SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_RSA_WITH_3DES_EDE_CBC_SHA,           SSL_ALLOWED, PR_TRUE,  PR_FALSE},
- { TLS_RSA_WITH_RC4_128_SHA,                SSL_ALLOWED, PR_TRUE,  PR_FALSE},
- { TLS_RSA_WITH_RC4_128_MD5,                SSL_ALLOWED, PR_TRUE,  PR_FALSE},
+ /* { TLS_RSA_WITH_CAMELLIA_256_CBC_SHA,       SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_RSA_WITH_SEED_CBC_SHA,               SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_RSA_WITH_3DES_EDE_CBC_SHA,           SSL_ALLOWED, PR_TRUE,  PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_RSA_WITH_RC4_128_SHA,                SSL_ALLOWED, PR_TRUE,  PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_RSA_WITH_RC4_128_MD5,                SSL_ALLOWED, PR_TRUE,  PR_FALSE}, no support in wolfpkcs11 */
 
  /* 56-bit DES "domestic" cipher suites */
- { TLS_DHE_RSA_WITH_DES_CBC_SHA,            SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_DHE_DSS_WITH_DES_CBC_SHA,            SSL_ALLOWED, PR_FALSE, PR_FALSE},
- { TLS_RSA_WITH_DES_CBC_SHA,                SSL_ALLOWED, PR_FALSE, PR_FALSE},
+ /* { TLS_DHE_RSA_WITH_DES_CBC_SHA,            SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_DHE_DSS_WITH_DES_CBC_SHA,            SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
+ /* { TLS_RSA_WITH_DES_CBC_SHA,                SSL_ALLOWED, PR_FALSE, PR_FALSE}, no support in wolfpkcs11 */
 
  /* ciphersuites with no encryption */
  { TLS_ECDHE_ECDSA_WITH_NULL_SHA,           SSL_ALLOWED, PR_FALSE, PR_FALSE},
@@ -202,10 +202,10 @@ static const SSLSignatureScheme defaultSignatureSchemes[] = {
     ssl_sig_rsa_pkcs1_sha384,
     ssl_sig_rsa_pkcs1_sha512,
     ssl_sig_rsa_pkcs1_sha1,
-    ssl_sig_dsa_sha256,
-    ssl_sig_dsa_sha384,
-    ssl_sig_dsa_sha512,
-    ssl_sig_dsa_sha1
+    /* ssl_sig_dsa_sha256, no support in wolfpkcs11 */
+    /* ssl_sig_dsa_sha384, no support in wolfpkcs11 */
+    /* ssl_sig_dsa_sha512, no support in wolfpkcs11 */
+    /* ssl_sig_dsa_sha1 no support in wolfpkcs11 */
 };
 PR_STATIC_ASSERT(PR_ARRAY_SIZE(defaultSignatureSchemes) <=
                  MAX_SIGNATURE_SCHEMES);
@@ -229,7 +229,7 @@ ssl3_CheckCipherSuiteOrderConsistency()
 static const /*SSL3ClientCertificateType */ PRUint8 certificate_types[] = {
     ct_RSA_sign,
     ct_ECDSA_sign,
-    ct_DSS_sign,
+    /* ct_DSS_sign, no support in wolfpkcs11 */
 };
 
 static SSL3Statistics ssl3stats;
@@ -263,43 +263,43 @@ static const ssl3CipherSuiteDef cipher_suite_defs[] = {
     { TLS_RSA_WITH_NULL_MD5, cipher_null, ssl_mac_md5, kea_rsa, ssl_hash_none },
     { TLS_RSA_WITH_NULL_SHA, cipher_null, ssl_mac_sha, kea_rsa, ssl_hash_none },
     { TLS_RSA_WITH_NULL_SHA256, cipher_null, ssl_hmac_sha256, kea_rsa, ssl_hash_sha256 },
-    { TLS_RSA_WITH_RC4_128_MD5, cipher_rc4, ssl_mac_md5, kea_rsa, ssl_hash_none },
-    { TLS_RSA_WITH_RC4_128_SHA, cipher_rc4, ssl_mac_sha, kea_rsa, ssl_hash_none },
-    { TLS_RSA_WITH_DES_CBC_SHA, cipher_des, ssl_mac_sha, kea_rsa, ssl_hash_none },
-    { TLS_RSA_WITH_3DES_EDE_CBC_SHA, cipher_3des, ssl_mac_sha, kea_rsa, ssl_hash_none },
-    { TLS_DHE_DSS_WITH_DES_CBC_SHA, cipher_des, ssl_mac_sha, kea_dhe_dss, ssl_hash_none },
-    { TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA,
-      cipher_3des, ssl_mac_sha, kea_dhe_dss, ssl_hash_none },
-    { TLS_DHE_DSS_WITH_RC4_128_SHA, cipher_rc4, ssl_mac_sha, kea_dhe_dss, ssl_hash_none },
-    { TLS_DHE_RSA_WITH_DES_CBC_SHA, cipher_des, ssl_mac_sha, kea_dhe_rsa, ssl_hash_none },
-    { TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA,
-      cipher_3des, ssl_mac_sha, kea_dhe_rsa, ssl_hash_none },
+    /* { TLS_RSA_WITH_RC4_128_MD5, cipher_rc4, ssl_mac_md5, kea_rsa, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_RSA_WITH_RC4_128_SHA, cipher_rc4, ssl_mac_sha, kea_rsa, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_RSA_WITH_DES_CBC_SHA, cipher_des, ssl_mac_sha, kea_rsa, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_RSA_WITH_3DES_EDE_CBC_SHA, cipher_3des, ssl_mac_sha, kea_rsa, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_DHE_DSS_WITH_DES_CBC_SHA, cipher_des, ssl_mac_sha, kea_dhe_dss, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA,
+      cipher_3des, ssl_mac_sha, kea_dhe_dss, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_DHE_DSS_WITH_RC4_128_SHA, cipher_rc4, ssl_mac_sha, kea_dhe_dss, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_DHE_RSA_WITH_DES_CBC_SHA, cipher_des, ssl_mac_sha, kea_dhe_rsa, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA,
+      cipher_3des, ssl_mac_sha, kea_dhe_rsa, ssl_hash_none }, no support in wolfpkcs11 */
 
     /* New TLS cipher suites */
     { TLS_RSA_WITH_AES_128_CBC_SHA, cipher_aes_128, ssl_mac_sha, kea_rsa, ssl_hash_none },
     { TLS_RSA_WITH_AES_128_CBC_SHA256, cipher_aes_128, ssl_hmac_sha256, kea_rsa, ssl_hash_sha256 },
-    { TLS_DHE_DSS_WITH_AES_128_CBC_SHA, cipher_aes_128, ssl_mac_sha, kea_dhe_dss, ssl_hash_none },
+    /* { TLS_DHE_DSS_WITH_AES_128_CBC_SHA, cipher_aes_128, ssl_mac_sha, kea_dhe_dss, ssl_hash_none }, no support in wolfpkcs11 */
     { TLS_DHE_RSA_WITH_AES_128_CBC_SHA, cipher_aes_128, ssl_mac_sha, kea_dhe_rsa, ssl_hash_none },
     { TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, cipher_aes_128, ssl_hmac_sha256, kea_dhe_rsa, ssl_hash_sha256 },
     { TLS_RSA_WITH_AES_256_CBC_SHA, cipher_aes_256, ssl_mac_sha, kea_rsa, ssl_hash_none },
     { TLS_RSA_WITH_AES_256_CBC_SHA256, cipher_aes_256, ssl_hmac_sha256, kea_rsa, ssl_hash_sha256 },
-    { TLS_DHE_DSS_WITH_AES_256_CBC_SHA, cipher_aes_256, ssl_mac_sha, kea_dhe_dss, ssl_hash_none },
+    /* { TLS_DHE_DSS_WITH_AES_256_CBC_SHA, cipher_aes_256, ssl_mac_sha, kea_dhe_dss, ssl_hash_none }, no support in wolfpkcs11 */
     { TLS_DHE_RSA_WITH_AES_256_CBC_SHA, cipher_aes_256, ssl_mac_sha, kea_dhe_rsa, ssl_hash_none },
     { TLS_DHE_RSA_WITH_AES_256_CBC_SHA256, cipher_aes_256, ssl_hmac_sha256, kea_dhe_rsa, ssl_hash_sha256 },
     { TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, cipher_aes_256_gcm, ssl_mac_aead, kea_dhe_rsa, ssl_hash_sha384 },
 
-    { TLS_RSA_WITH_SEED_CBC_SHA, cipher_seed, ssl_mac_sha, kea_rsa, ssl_hash_none },
+    /* { TLS_RSA_WITH_SEED_CBC_SHA, cipher_seed, ssl_mac_sha, kea_rsa, ssl_hash_none }, no support in wolfpkcs11 */
 
-    { TLS_RSA_WITH_CAMELLIA_128_CBC_SHA, cipher_camellia_128, ssl_mac_sha, kea_rsa, ssl_hash_none },
-    { TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA,
-      cipher_camellia_128, ssl_mac_sha, kea_dhe_dss, ssl_hash_none },
-    { TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,
-      cipher_camellia_128, ssl_mac_sha, kea_dhe_rsa, ssl_hash_none },
-    { TLS_RSA_WITH_CAMELLIA_256_CBC_SHA, cipher_camellia_256, ssl_mac_sha, kea_rsa, ssl_hash_none },
-    { TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA,
-      cipher_camellia_256, ssl_mac_sha, kea_dhe_dss, ssl_hash_none },
-    { TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,
-      cipher_camellia_256, ssl_mac_sha, kea_dhe_rsa, ssl_hash_none },
+    /* { TLS_RSA_WITH_CAMELLIA_128_CBC_SHA, cipher_camellia_128, ssl_mac_sha, kea_rsa, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA,
+      cipher_camellia_128, ssl_mac_sha, kea_dhe_dss, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA,
+      cipher_camellia_128, ssl_mac_sha, kea_dhe_rsa, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_RSA_WITH_CAMELLIA_256_CBC_SHA, cipher_camellia_256, ssl_mac_sha, kea_rsa, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA,
+      cipher_camellia_256, ssl_mac_sha, kea_dhe_dss, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA,
+      cipher_camellia_256, ssl_mac_sha, kea_dhe_rsa, ssl_hash_none }, no support in wolfpkcs11 */
 
     { TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, cipher_aes_128_gcm, ssl_mac_aead, kea_dhe_rsa, ssl_hash_sha256 },
     { TLS_RSA_WITH_AES_128_GCM_SHA256, cipher_aes_128_gcm, ssl_mac_aead, kea_rsa, ssl_hash_sha256 },
@@ -310,45 +310,45 @@ static const ssl3CipherSuiteDef cipher_suite_defs[] = {
     { TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, cipher_aes_256_gcm, ssl_mac_aead, kea_ecdhe_rsa, ssl_hash_sha384 },
     { TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, cipher_aes_256, ssl_hmac_sha384, kea_ecdhe_ecdsa, ssl_hash_sha384 },
     { TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, cipher_aes_256, ssl_hmac_sha384, kea_ecdhe_rsa, ssl_hash_sha384 },
-    { TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, cipher_aes_128_gcm, ssl_mac_aead, kea_dhe_dss, ssl_hash_sha256 },
-    { TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, cipher_aes_128, ssl_hmac_sha256, kea_dhe_dss, ssl_hash_sha256 },
-    { TLS_DHE_DSS_WITH_AES_256_CBC_SHA256, cipher_aes_256, ssl_hmac_sha256, kea_dhe_dss, ssl_hash_sha256 },
-    { TLS_DHE_DSS_WITH_AES_256_GCM_SHA384, cipher_aes_256_gcm, ssl_mac_aead, kea_dhe_dss, ssl_hash_sha384 },
+    /* { TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, cipher_aes_128_gcm, ssl_mac_aead, kea_dhe_dss, ssl_hash_sha256 }, no support in wolfpkcs11 */
+    /* { TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, cipher_aes_128, ssl_hmac_sha256, kea_dhe_dss, ssl_hash_sha256 }, no support in wolfpkcs11 */
+    /* { TLS_DHE_DSS_WITH_AES_256_CBC_SHA256, cipher_aes_256, ssl_hmac_sha256, kea_dhe_dss, ssl_hash_sha256 }, no support in wolfpkcs11 */
+    /* { TLS_DHE_DSS_WITH_AES_256_GCM_SHA384, cipher_aes_256_gcm, ssl_mac_aead, kea_dhe_dss, ssl_hash_sha384 }, no support in wolfpkcs11 */
     { TLS_RSA_WITH_AES_256_GCM_SHA384, cipher_aes_256_gcm, ssl_mac_aead, kea_rsa, ssl_hash_sha384 },
 
-    { TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256, cipher_chacha20, ssl_mac_aead, kea_dhe_rsa, ssl_hash_sha256 },
+    /* { TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256, cipher_chacha20, ssl_mac_aead, kea_dhe_rsa, ssl_hash_sha256 }, no support in wolfpkcs11 */
 
-    { TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, cipher_chacha20, ssl_mac_aead, kea_ecdhe_rsa, ssl_hash_sha256 },
-    { TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, cipher_chacha20, ssl_mac_aead, kea_ecdhe_ecdsa, ssl_hash_sha256 },
+    /* { TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, cipher_chacha20, ssl_mac_aead, kea_ecdhe_rsa, ssl_hash_sha256 }, no support in wolfpkcs11 */
+    /* { TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, cipher_chacha20, ssl_mac_aead, kea_ecdhe_ecdsa, ssl_hash_sha256 }, no support in wolfpkcs11 */
 
     { TLS_ECDH_ECDSA_WITH_NULL_SHA, cipher_null, ssl_mac_sha, kea_ecdh_ecdsa, ssl_hash_none },
-    { TLS_ECDH_ECDSA_WITH_RC4_128_SHA, cipher_rc4, ssl_mac_sha, kea_ecdh_ecdsa, ssl_hash_none },
-    { TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA, cipher_3des, ssl_mac_sha, kea_ecdh_ecdsa, ssl_hash_none },
+    /* { TLS_ECDH_ECDSA_WITH_RC4_128_SHA, cipher_rc4, ssl_mac_sha, kea_ecdh_ecdsa, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA, cipher_3des, ssl_mac_sha, kea_ecdh_ecdsa, ssl_hash_none }, no support in wolfpkcs11 */
     { TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA, cipher_aes_128, ssl_mac_sha, kea_ecdh_ecdsa, ssl_hash_none },
     { TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA, cipher_aes_256, ssl_mac_sha, kea_ecdh_ecdsa, ssl_hash_none },
 
     { TLS_ECDHE_ECDSA_WITH_NULL_SHA, cipher_null, ssl_mac_sha, kea_ecdhe_ecdsa, ssl_hash_none },
-    { TLS_ECDHE_ECDSA_WITH_RC4_128_SHA, cipher_rc4, ssl_mac_sha, kea_ecdhe_ecdsa, ssl_hash_none },
-    { TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA, cipher_3des, ssl_mac_sha, kea_ecdhe_ecdsa, ssl_hash_none },
+    /* { TLS_ECDHE_ECDSA_WITH_RC4_128_SHA, cipher_rc4, ssl_mac_sha, kea_ecdhe_ecdsa, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA, cipher_3des, ssl_mac_sha, kea_ecdhe_ecdsa, ssl_hash_none }, no support in wolfpkcs11 */
     { TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, cipher_aes_128, ssl_mac_sha, kea_ecdhe_ecdsa, ssl_hash_none },
     { TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, cipher_aes_128, ssl_hmac_sha256, kea_ecdhe_ecdsa, ssl_hash_sha256 },
     { TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, cipher_aes_256, ssl_mac_sha, kea_ecdhe_ecdsa, ssl_hash_none },
 
     { TLS_ECDH_RSA_WITH_NULL_SHA, cipher_null, ssl_mac_sha, kea_ecdh_rsa, ssl_hash_none },
-    { TLS_ECDH_RSA_WITH_RC4_128_SHA, cipher_rc4, ssl_mac_sha, kea_ecdh_rsa, ssl_hash_none },
-    { TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA, cipher_3des, ssl_mac_sha, kea_ecdh_rsa, ssl_hash_none },
+    /* { TLS_ECDH_RSA_WITH_RC4_128_SHA, cipher_rc4, ssl_mac_sha, kea_ecdh_rsa, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA, cipher_3des, ssl_mac_sha, kea_ecdh_rsa, ssl_hash_none }, no support in wolfpkcs11 */
     { TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, cipher_aes_128, ssl_mac_sha, kea_ecdh_rsa, ssl_hash_none },
     { TLS_ECDH_RSA_WITH_AES_256_CBC_SHA, cipher_aes_256, ssl_mac_sha, kea_ecdh_rsa, ssl_hash_none },
 
     { TLS_ECDHE_RSA_WITH_NULL_SHA, cipher_null, ssl_mac_sha, kea_ecdhe_rsa, ssl_hash_none },
-    { TLS_ECDHE_RSA_WITH_RC4_128_SHA, cipher_rc4, ssl_mac_sha, kea_ecdhe_rsa, ssl_hash_none },
-    { TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA, cipher_3des, ssl_mac_sha, kea_ecdhe_rsa, ssl_hash_none },
+    /* { TLS_ECDHE_RSA_WITH_RC4_128_SHA, cipher_rc4, ssl_mac_sha, kea_ecdhe_rsa, ssl_hash_none }, no support in wolfpkcs11 */
+    /* { TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA, cipher_3des, ssl_mac_sha, kea_ecdhe_rsa, ssl_hash_none }, no support in wolfpkcs11 */
     { TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, cipher_aes_128, ssl_mac_sha, kea_ecdhe_rsa, ssl_hash_none },
     { TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, cipher_aes_128, ssl_hmac_sha256, kea_ecdhe_rsa, ssl_hash_sha256 },
     { TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, cipher_aes_256, ssl_mac_sha, kea_ecdhe_rsa, ssl_hash_none },
 
     { TLS_AES_128_GCM_SHA256, cipher_aes_128_gcm, ssl_mac_aead, kea_tls13_any, ssl_hash_sha256 },
-    { TLS_CHACHA20_POLY1305_SHA256, cipher_chacha20, ssl_mac_aead, kea_tls13_any, ssl_hash_sha256 },
+    /* { TLS_CHACHA20_POLY1305_SHA256, cipher_chacha20, ssl_mac_aead, kea_tls13_any, ssl_hash_sha256 }, no support in wolfpkcs11 */
     { TLS_AES_256_GCM_SHA384, cipher_aes_256_gcm, ssl_mac_aead, kea_tls13_any, ssl_hash_sha384 },
 };
 
