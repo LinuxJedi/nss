@@ -343,6 +343,7 @@ TEST_P(TlsConnectTls13, DCConnectRsaeDcSpki) {
   CheckPeerDelegCred(client_, false);
 }
 
+/* wolfpkcs11 supports a minimum rsa key of 1024
 // Generate a weak key.  We can't do this in the fixture because certutil
 // won't sign with such a tiny key.  That's OK, because this is fast(ish).
 static void GenerateWeakRsaKey(ScopedSECKEYPrivateKey& priv,
@@ -421,6 +422,7 @@ TEST_P(TlsConnectTls13, DCWeakKey) {
 #endif
   ASSERT_EQ(SECSuccess, NSS_OptionSet(NSS_KEY_SIZE_POLICY_FLAGS, keySizeFlags));
 }
+*/
 
 class ReplaceDCSigScheme : public TlsHandshakeFilter {
  public:

@@ -794,13 +794,13 @@ static void GetCipherAndLimit(uint16_t version, uint16_t* cipher,
     *cipher = TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA;
     *limit = 0x5aULL << 28;
   } else if (version == SSL_LIBRARY_VERSION_TLS_1_2) {
-    *cipher = TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256;
+    *cipher = TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256;
     *limit = (1ULL << 48) - 1;
   } else {
     // This test probably isn't especially useful for TLS 1.3, which has a much
     // shorter sequence number encoding.  That space can probably be searched in
     // a reasonable amount of time.
-    *cipher = TLS_CHACHA20_POLY1305_SHA256;
+    *cipher = TLS_AES_128_GCM_SHA256;
     // Assume that we are starting with an expected sequence number of 0.
     *limit = (1ULL << 15) - 1;
   }

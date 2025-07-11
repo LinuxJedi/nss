@@ -437,7 +437,7 @@ INSTANTIATE_CIPHER_TEST_P(
 INSTANTIATE_CIPHER_TEST_P(TLS13, All, V13,
                           ::testing::ValuesIn(kFasterDHEGroups),
                           ::testing::ValuesIn(kSignatureSchemesParamsArrTls13),
-                          TLS_AES_128_GCM_SHA256, TLS_CHACHA20_POLY1305_SHA256,
+                          TLS_AES_128_GCM_SHA256,
                           TLS_AES_256_GCM_SHA384);
 INSTANTIATE_CIPHER_TEST_P(TLS13AllGroups, All, V13,
                           ::testing::ValuesIn(kAllDHEGroups),

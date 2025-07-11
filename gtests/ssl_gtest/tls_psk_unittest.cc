@@ -94,6 +94,7 @@ TEST_P(Tls13PskTest, KeyTooLarge) {
   CheckKeys(ssl_kea_ecdh, ssl_grp_ec_curve25519, ssl_auth_psk, ssl_sig_none);
 }
 
+/* no chacha support in wolfpkcs11
 // Attempt to use a PSK with the wrong PRF hash.
 // "Clients MUST verify that...the server selected a cipher suite
 // indicating a Hash associated with the PSK"
@@ -111,6 +112,7 @@ TEST_P(Tls13PskTest, ClientVerifyHashType) {
   }
   EXPECT_EQ(SSL_ERROR_RX_MALFORMED_SERVER_HELLO, client_->error_code());
 }
+*/
 
 // Different EPSKs (by label) on each endpoint. Expect cert auth.
 TEST_P(Tls13PskTest, LabelMismatch) {
@@ -303,6 +305,7 @@ TEST_P(Tls13PskTest, BadConfigValues) {
                                               label.size()));
 }
 
+/* no chacha support in wolfpkcs11
 // If the server has an EPSK configured with a ciphersuite not supported
 // by the client, it should use certificate authentication.
 TEST_P(Tls13PskTest, FallbackUnsupportedCiphersuite) {
@@ -330,6 +333,7 @@ TEST_P(Tls13PskTest, ExplicitSuiteNoOverlap) {
   server_->CheckErrorCode(SSL_ERROR_NO_CYPHER_OVERLAP);
   client_->CheckErrorCode(SSL_ERROR_NO_CYPHER_OVERLAP);
 }
+*/
 
 TEST_P(Tls13PskTest, SuppressHandshakeCertReq) {
   AddPsk(scoped_psk_, kPskDummyLabel_, kPskHash_);
@@ -496,11 +500,11 @@ TEST_P(Tls13PskTestWithCiphers, 0RttMaxEarlyData) {
   SendReceive();
 }
 
-static const uint16_t k0RttCipherDefs[] = {TLS_CHACHA20_POLY1305_SHA256,
+static const uint16_t k0RttCipherDefs[] = {
                                            TLS_AES_128_GCM_SHA256,
                                            TLS_AES_256_GCM_SHA384};
 
-static const uint16_t kDefaultSuite[] = {TLS_CHACHA20_POLY1305_SHA256};
+static const uint16_t kDefaultSuite[] = {TLS_AES_128_GCM_SHA256};
 
 INSTANTIATE_TEST_SUITE_P(
     Tls13PskTest, Tls13PskTest,

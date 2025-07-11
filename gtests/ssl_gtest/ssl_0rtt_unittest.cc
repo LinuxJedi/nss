@@ -142,7 +142,7 @@ class TlsZeroRttReplayTest : public TlsConnectTls13 {
     server_->SetAntiReplayContext(anti_replay_);
     if (epsk) {
       AddPsk(epsk, std::string("foo"), ssl_hash_sha256,
-             TLS_CHACHA20_POLY1305_SHA256);
+              TLS_AES_128_GCM_SHA256);
     }
 
     // Capture the early_data extension, which should not appear.
@@ -178,7 +178,7 @@ class TlsZeroRttReplayTest : public TlsConnectTls13 {
     ScopedPK11SymKey scoped_psk(key);
     RolloverAntiReplay();
     AddPsk(scoped_psk, std::string("foo"), ssl_hash_sha256,
-           TLS_CHACHA20_POLY1305_SHA256);
+            TLS_AES_128_GCM_SHA256);
     StartConnect();
     RunTest(rollover, scoped_psk);
   }

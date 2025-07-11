@@ -234,10 +234,12 @@ TEST_P(Tls13SkipTest, SkipClientCertificateVerify) {
                  SSL_ERROR_RX_UNEXPECTED_FINISHED);
 }
 
+/* wolfpkcs no tls <1.2 support
 INSTANTIATE_TEST_SUITE_P(
     SkipTls10, TlsSkipTest,
     ::testing::Combine(TlsConnectTestBase::kTlsVariantsStream,
                        TlsConnectTestBase::kTlsV10));
+*/
 INSTANTIATE_TEST_SUITE_P(SkipVariants, TlsSkipTest,
                          ::testing::Combine(TlsConnectTestBase::kTlsVariantsAll,
                                             TlsConnectTestBase::kTlsV11V12));

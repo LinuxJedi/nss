@@ -748,6 +748,7 @@ INSTANTIATE_TEST_SUITE_P(DatagramOnly, TlsConnectDatagram,
 INSTANTIATE_TEST_SUITE_P(DatagramHolddown, TlsHolddownTest,
                          TlsConnectTestBase::kTlsV11Plus);
 
+/* wolfpkcs no tls <1.2 support
 INSTANTIATE_TEST_SUITE_P(
     Pre12Stream, TlsConnectPre12,
     ::testing::Combine(TlsConnectTestBase::kTlsVariantsStream,
@@ -756,6 +757,7 @@ INSTANTIATE_TEST_SUITE_P(
     Pre12Datagram, TlsConnectPre12,
     ::testing::Combine(TlsConnectTestBase::kTlsVariantsDatagram,
                        TlsConnectTestBase::kTlsV11));
+*/
 
 INSTANTIATE_TEST_SUITE_P(Version12Only, TlsConnectTls12,
                          TlsConnectTestBase::kTlsVariantsAll);

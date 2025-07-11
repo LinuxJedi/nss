@@ -155,7 +155,7 @@ TEST_P(TlsConnectTls13, EarlyExporterExternalPsk) {
   ScopedPK11SymKey scoped_psk(
       PK11_KeyGen(slot.get(), CKM_HKDF_KEY_GEN, nullptr, 16, nullptr));
   AddPsk(scoped_psk, std::string("foo"), ssl_hash_sha256,
-         TLS_CHACHA20_POLY1305_SHA256);
+          TLS_AES_128_GCM_SHA256);
   StartConnect();
   client_->Set0RttEnabled(true);
   server_->Set0RttEnabled(true);

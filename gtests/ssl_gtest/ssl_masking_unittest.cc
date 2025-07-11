@@ -319,6 +319,7 @@ TEST_P(SuiteTest, MaskTlsVariantKeySeparation) {
   EXPECT_NE(tls_mask, dtls_mask);
 }
 
+/* chacha not supported in wolfpkcs
 TEST_P(VariantTest, MaskChaChaRederiveOddSizes) {
   // Non-block-aligned.
   std::vector<uint8_t> sample(27);
@@ -331,8 +332,9 @@ TEST_P(VariantTest, MaskChaChaRederiveOddSizes) {
   mask1.pop_back();
   EXPECT_TRUE(mask1 == mask2);
 }
+*/
 
-static const uint16_t kMaskingCiphersuites[] = {TLS_CHACHA20_POLY1305_SHA256,
+static const uint16_t kMaskingCiphersuites[] = {
                                                 TLS_AES_128_GCM_SHA256,
                                                 TLS_AES_256_GCM_SHA384};
 ::testing::internal::ParamGenerator<uint16_t> kMaskingCiphersuiteParams =

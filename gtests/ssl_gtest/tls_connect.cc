@@ -36,25 +36,31 @@ static const SSLProtocolVariant kTlsVariantsAllArr[] = {ssl_variant_stream,
     TlsConnectTestBase::kTlsVariantsAll =
         ::testing::ValuesIn(kTlsVariantsAllArr);
 
+/* wolfpkcs no tls <1.2 support
 static const uint16_t kTlsV10Arr[] = {SSL_LIBRARY_VERSION_TLS_1_0};
 ::testing::internal::ParamGenerator<uint16_t> TlsConnectTestBase::kTlsV10 =
     ::testing::ValuesIn(kTlsV10Arr);
 static const uint16_t kTlsV11Arr[] = {SSL_LIBRARY_VERSION_TLS_1_1};
 ::testing::internal::ParamGenerator<uint16_t> TlsConnectTestBase::kTlsV11 =
     ::testing::ValuesIn(kTlsV11Arr);
+*/
 static const uint16_t kTlsV12Arr[] = {SSL_LIBRARY_VERSION_TLS_1_2};
 ::testing::internal::ParamGenerator<uint16_t> TlsConnectTestBase::kTlsV12 =
     ::testing::ValuesIn(kTlsV12Arr);
+/* wolfpkcs no tls <1.2 support
 static const uint16_t kTlsV10V11Arr[] = {SSL_LIBRARY_VERSION_TLS_1_0,
                                          SSL_LIBRARY_VERSION_TLS_1_1};
 ::testing::internal::ParamGenerator<uint16_t> TlsConnectTestBase::kTlsV10V11 =
     ::testing::ValuesIn(kTlsV10V11Arr);
-static const uint16_t kTlsV10ToV12Arr[] = {SSL_LIBRARY_VERSION_TLS_1_0,
-                                           SSL_LIBRARY_VERSION_TLS_1_1,
+*/
+static const uint16_t kTlsV10ToV12Arr[] = {/* SSL_LIBRARY_VERSION_TLS_1_0,
+                                            * SSL_LIBRARY_VERSION_TLS_1_1,
+                                            * wolfpkcs no tls <1.2 support */
                                            SSL_LIBRARY_VERSION_TLS_1_2};
 ::testing::internal::ParamGenerator<uint16_t> TlsConnectTestBase::kTlsV10ToV12 =
     ::testing::ValuesIn(kTlsV10ToV12Arr);
-static const uint16_t kTlsV11V12Arr[] = {SSL_LIBRARY_VERSION_TLS_1_1,
+static const uint16_t kTlsV11V12Arr[] = {/* SSL_LIBRARY_VERSION_TLS_1_1,
+                                          * wolfpkcs no tls <1.2 support */
                                          SSL_LIBRARY_VERSION_TLS_1_2};
 ::testing::internal::ParamGenerator<uint16_t> TlsConnectTestBase::kTlsV11V12 =
     ::testing::ValuesIn(kTlsV11V12Arr);
@@ -63,7 +69,7 @@ static const uint16_t kTlsV11PlusArr[] = {
 #ifndef NSS_DISABLE_TLS_1_3
     SSL_LIBRARY_VERSION_TLS_1_3,
 #endif
-    SSL_LIBRARY_VERSION_TLS_1_2, SSL_LIBRARY_VERSION_TLS_1_1};
+    SSL_LIBRARY_VERSION_TLS_1_2, /* SSL_LIBRARY_VERSION_TLS_1_1 wolfpkcs no tls <1.2 support */};
 ::testing::internal::ParamGenerator<uint16_t> TlsConnectTestBase::kTlsV11Plus =
     ::testing::ValuesIn(kTlsV11PlusArr);
 static const uint16_t kTlsV12PlusArr[] = {
@@ -80,8 +86,8 @@ static const uint16_t kTlsVAllArr[] = {
 #ifndef NSS_DISABLE_TLS_1_3
     SSL_LIBRARY_VERSION_TLS_1_3,
 #endif
-    SSL_LIBRARY_VERSION_TLS_1_2, SSL_LIBRARY_VERSION_TLS_1_1,
-    SSL_LIBRARY_VERSION_TLS_1_0};
+    SSL_LIBRARY_VERSION_TLS_1_2, /* SSL_LIBRARY_VERSION_TLS_1_1,
+    SSL_LIBRARY_VERSION_TLS_1_0 wolfpkcs no tls <1.2 support */};
 ::testing::internal::ParamGenerator<uint16_t> TlsConnectTestBase::kTlsVAll =
     ::testing::ValuesIn(kTlsVAllArr);
 

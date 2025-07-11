@@ -32,10 +32,14 @@ class TlsConnectTestBase : public ::testing::Test {
       kTlsVariantsDatagram;
   static ::testing::internal::ParamGenerator<SSLProtocolVariant>
       kTlsVariantsAll;
+  /* wolfpkcs no tls <1.2 support
   static ::testing::internal::ParamGenerator<uint16_t> kTlsV10;
   static ::testing::internal::ParamGenerator<uint16_t> kTlsV11;
+  */
   static ::testing::internal::ParamGenerator<uint16_t> kTlsV12;
+  /* wolfpkcs no tls <1.2 support
   static ::testing::internal::ParamGenerator<uint16_t> kTlsV10V11;
+  */
   static ::testing::internal::ParamGenerator<uint16_t> kTlsV11V12;
   static ::testing::internal::ParamGenerator<uint16_t> kTlsV10ToV12;
   static ::testing::internal::ParamGenerator<uint16_t> kTlsV13;

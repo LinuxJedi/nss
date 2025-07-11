@@ -679,6 +679,7 @@ TEST_P(TlsConnectStream, ResumptionOverrideCipher) {
   }
 }
 
+/* no chacha support in wolfpkcs11
 // In TLS 1.3, it is possible to resume with a different cipher if it has the
 // same hash.
 TEST_P(TlsConnectTls13, ResumeClientCompatibleCipher) {
@@ -710,6 +711,7 @@ TEST_P(TlsConnectTls13, ResumeServerCompatibleCipher) {
   Connect();
   CheckKeys();
 }
+*/
 
 class SelectedVersionReplacer : public TlsHandshakeFilter {
  public:

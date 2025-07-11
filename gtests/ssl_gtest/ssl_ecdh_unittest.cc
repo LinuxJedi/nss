@@ -312,6 +312,7 @@ TEST_P(TlsConnectStreamPre13, ConfiguredGroupsRenegotiate) {
             ssl_sig_rsa_pss_rsae_sha256);
 }
 
+/* wolfpkcs: no 25519 support
 TEST_P(TlsKeyExchangeTest, Curve25519) {
   Reset(TlsAgent::kServerEcdsa256);
   const std::vector<SSLNamedGroup> groups = {
@@ -537,6 +538,7 @@ TEST_P(TlsKeyExchangeTest13, MultipleClientShares) {
                                              ssl_grp_ec_secp256r1};
   CheckKEXDetails(client_groups, shares);
 }
+*/
 
 // Replace the point in the client key exchange message with an empty one
 class ECCClientKEXFilter : public TlsHandshakeFilter {

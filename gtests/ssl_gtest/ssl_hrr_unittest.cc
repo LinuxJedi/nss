@@ -190,7 +190,13 @@ TEST_P(TlsConnectTls13, RetryWithSameKeyShare) {
 // same shares, even though the server wanted something else.
 TEST_P(TlsConnectTls13, RetryWithTwoShares) {
   EnsureTlsSetup();
-  EXPECT_EQ(SECSuccess, SSL_SendAdditionalKeyShares(client_->ssl_fd(), 1));
+  /* wolfpkcs11:
+   *    SSL_SendAdditionalKeyShares decides how many key shares to send. NSS
+   *    sends the param passed in +1. 1 means 2 key shares. It uses the order
+   *    in ssl_named_groups. Since we don't support 25519 then the first
+   *    two groups are secp256r1 and secp384r1 overlapping with the server.
+   *    changins to just one key share forces the expected error. */
+  EXPECT_EQ(SECSuccess, SSL_SendAdditionalKeyShares(client_->ssl_fd(), 0));
   MakeTlsFilter<KeyShareReplayer>(client_);
 
   static const std::vector<SSLNamedGroup> groups = {ssl_grp_ec_secp384r1,
