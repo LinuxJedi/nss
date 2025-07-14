@@ -544,6 +544,8 @@ TEST_P(TlsConnectTls12, AutoClientSelectRsaPss) {
 }
 
 TEST_P(TlsConnectTls12, AutoClientSelectEcc) {
+  // wolfpkcs: set correct cert when using ecdsa
+  Reset(TlsAgent::kServerEcdsa256);
   AutoClientResults ecc = {{SECFailure, TlsAgent::kClient},
                            {SECFailure, TlsAgent::kClient},
                            {SECSuccess, TlsAgent::kDelegatorEcdsa256},
@@ -560,6 +562,7 @@ TEST_P(TlsConnectTls12, AutoClientSelectEcc) {
   EXPECT_TRUE(ecc.hookCalled);
 }
 
+/* No DSA support in wolfPKCS
 TEST_P(TlsConnectTls12, AutoClientSelectDsa) {
   AutoClientResults dsa = {{SECFailure, TlsAgent::kClient},
                            {SECFailure, TlsAgent::kClient},
@@ -576,6 +579,7 @@ TEST_P(TlsConnectTls12, AutoClientSelectDsa) {
   Connect();
   EXPECT_TRUE(dsa.hookCalled);
 }
+*/
 
 TEST_P(TlsConnectClientAuthStream13, PostHandshakeAuthMultiple) {
   client_->SetupClientAuth(std::get<2>(GetParam()), true);
