@@ -944,7 +944,7 @@ class FirstDropThenKeepHandshakeFilter : public TlsHandshakeFilter {
 TEST_F(TlsConnectDatagram13, PreviousHandshakeRemovedWhenDropped) {
   EnsureTlsSetup();
   static const std::vector<SSLNamedGroup> client_groups = {
-      ssl_grp_ec_secp384r1, ssl_grp_ec_secp521r1, ssl_grp_ec_curve25519};
+      ssl_grp_ec_secp384r1, ssl_grp_ec_secp521r1, /* ssl_grp_ec_curve25519 wolfpkcs11 no support */};
   client_->ConfigNamedGroups(client_groups);
   // Ensure that the message is indeed longer than the MTU we install.
   EXPECT_EQ(SECSuccess, SSL_SendAdditionalKeyShares(client_->ssl_fd(), 2));

@@ -56,11 +56,9 @@
         'tls_filter.cc',
         'tls_grease_unittest.cc',
         'tls_hkdf_unittest.cc',
-        'tls_mlkem_unittest.cc',
         'tls_protect.cc',
         'tls_psk_unittest.cc',
         'tls_subcerts_unittest.cc',
-        'tls_xyber_unittest.cc',
       ],
       'dependencies': [
         '<(DEPTH)/exports.gyp:nss_exports',

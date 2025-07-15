@@ -111,13 +111,14 @@ const PRUint16 SSL_ImplementedCiphers[] = {
     /* TLS_ECDH_ECDSA_WITH_RC4_128_SHA, no support in wolfpkcs11 */
     /* TLS_ECDH_RSA_WITH_RC4_128_SHA, no support in wolfpkcs11 */
 
+    /* wolfpkcs11: no support for static RSA
     TLS_RSA_WITH_AES_128_GCM_SHA256,
     TLS_RSA_WITH_AES_256_GCM_SHA384,
     TLS_RSA_WITH_AES_128_CBC_SHA,
-    TLS_RSA_WITH_AES_128_CBC_SHA256,
+    TLS_RSA_WITH_AES_128_CBC_SHA256, */
     /* TLS_RSA_WITH_CAMELLIA_128_CBC_SHA, no support in wolfpkcs11 */
-    TLS_RSA_WITH_AES_256_CBC_SHA,
-    TLS_RSA_WITH_AES_256_CBC_SHA256,
+    /* TLS_RSA_WITH_AES_256_CBC_SHA, */
+    /* TLS_RSA_WITH_AES_256_CBC_SHA256, */
     /* TLS_RSA_WITH_CAMELLIA_256_CBC_SHA, no support in wolfpkcs11 */
     /* TLS_RSA_WITH_SEED_CBC_SHA, no support in wolfpkcs11 */
     /* TLS_RSA_WITH_3DES_EDE_CBC_SHA, no support in wolfpkcs11 */
@@ -134,9 +135,10 @@ const PRUint16 SSL_ImplementedCiphers[] = {
     TLS_ECDHE_RSA_WITH_NULL_SHA,
     TLS_ECDH_RSA_WITH_NULL_SHA,
     TLS_ECDH_ECDSA_WITH_NULL_SHA,
+    /* wolfpkcs11: no support for static RSA
     TLS_RSA_WITH_NULL_SHA,
     TLS_RSA_WITH_NULL_SHA256,
-    TLS_RSA_WITH_NULL_MD5,
+    TLS_RSA_WITH_NULL_MD5, */
 
     0
 };
