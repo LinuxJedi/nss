@@ -758,6 +758,9 @@ pk11_GetPredefinedKeyLength(CK_KEY_TYPE keyType)
         case CKK_DES3:
             length = 24;
             break;
+        case CKK_AES:
+            length = 32;
+            break;
         case CKK_SKIPJACK:
             length = 10;
             break;
