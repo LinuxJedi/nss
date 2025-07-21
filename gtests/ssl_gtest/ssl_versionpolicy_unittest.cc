@@ -245,10 +245,12 @@ class TestPolicyVersionRange
 
 static const uint16_t kExpandedVersionsArr[] = {
     /* clang-format off */
+    /* wolfpkcs11 no support
     SSL_LIBRARY_VERSION_3_0 - 1,
     SSL_LIBRARY_VERSION_3_0,
     SSL_LIBRARY_VERSION_TLS_1_0,
     SSL_LIBRARY_VERSION_TLS_1_1,
+    */
     SSL_LIBRARY_VERSION_TLS_1_2,
 #ifndef NSS_DISABLE_TLS_1_3
     SSL_LIBRARY_VERSION_TLS_1_3,
