@@ -101,7 +101,7 @@ ssl_TestKeyPair(void *arg)
         default:
             PORT_Assert(0);
             PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
-            return SECFailure;
+            return (PRStatus)SECFailure;
     }
     if (rv != SECSuccess) {
         gECDHEKeyPairs[i].keyPair = NULL;
