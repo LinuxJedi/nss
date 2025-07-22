@@ -56,7 +56,7 @@ TEST_P(TlsConnectGeneric, ConnectEcdhe) {
 // DHE size to symmetric size.
 TEST_P(TlsConnectTls12, ConnectEcdheP384) {
   Reset(TlsAgent::kServerEcdsa384);
-  ConnectWithCipherSuite(TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256);
+  ConnectWithCipherSuite(TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384);
   CheckKeys(ssl_kea_ecdh, ssl_grp_ec_secp384r1, ssl_auth_ecdsa,
             ssl_sig_ecdsa_secp256r1_sha256);
 }
