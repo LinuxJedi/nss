@@ -138,12 +138,14 @@ class Tls13SkipTest : public TlsConnectTestBase,
   }
 };
 
+/* wolfpkcs11 no static rsa support
 TEST_P(TlsSkipTest, SkipCertificateRsa) {
   EnableOnlyStaticRsaCiphers();
   ServerSkipTest(std::make_shared<TlsHandshakeSkipFilter>(
       server_, kTlsHandshakeCertificate));
   client_->CheckErrorCode(SSL_ERROR_RX_UNEXPECTED_HELLO_DONE);
 }
+*/
 
 TEST_P(TlsSkipTest, SkipCertificateDhe) {
   ServerSkipTest(std::make_shared<TlsHandshakeSkipFilter>(

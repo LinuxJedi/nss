@@ -1395,6 +1395,7 @@ TEST_P(TlsConnectTls13, SignatureSchemeBadConfig) {
   client_->CheckErrorCode(SSL_ERROR_NO_CYPHER_OVERLAP);
 }
 
+/* wolfpkcs11 no static rsa support
 // Where there is no overlap on signature schemes, we still connect successfully
 // if we aren't going to use a signature.
 TEST_P(TlsConnectGenericPre13, SignatureAlgorithmNoOverlapStaticRsa) {
@@ -1406,6 +1407,7 @@ TEST_P(TlsConnectGenericPre13, SignatureAlgorithmNoOverlapStaticRsa) {
   Connect();
   CheckKeys(ssl_kea_rsa, ssl_auth_rsa_decrypt);
 }
+*/
 
 TEST_P(TlsConnectTls12Plus, SignatureAlgorithmNoOverlapEcdsa) {
   Reset(TlsAgent::kServerEcdsa256);

@@ -628,6 +628,7 @@ TEST_P(TlsExtensionTestPre13, RenegotiationInfoExtensionEmpty) {
       client_, ssl_renegotiation_info_xtn, extension));
 }
 
+/* wolfpkcs11 no static rsa support
 // This only works on TLS 1.2, since it relies on static RSA; otherwise libssl
 // picks the wrong cipher suite.
 TEST_P(TlsExtensionTest12, SignatureAlgorithmConfiguration) {
@@ -650,7 +651,9 @@ TEST_P(TlsExtensionTest12, SignatureAlgorithmConfiguration) {
     EXPECT_EQ(schemes[i], static_cast<SSLSignatureScheme>(v));
   }
 }
+*/
 
+/* wolfpkcs11 no dsa support
 // This only works on TLS 1.2, since it relies on DSA.
 TEST_P(TlsExtensionTest12, SignatureAlgorithmDisableDSA) {
   const std::vector<SSLSignatureScheme> schemes = {
@@ -700,6 +703,7 @@ TEST_P(TlsExtensionTest12, SignatureAlgorithmDisableDSA) {
   EXPECT_TRUE(ext2.Read(2, 2, &v));
   EXPECT_EQ(ssl_sig_rsa_pss_rsae_sha256, v);
 }
+*/
 
 // Temporary test to verify that we choke on an empty ClientKeyShare.
 // This test will fail when we implement HelloRetryRequest.

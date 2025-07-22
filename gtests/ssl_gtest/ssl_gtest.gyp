@@ -46,7 +46,6 @@
         'ssl_renegotiation_unittest.cc',
         'ssl_resumption_unittest.cc',
         'ssl_skip_unittest.cc',
-        'ssl_staticrsa_unittest.cc',
         'ssl_tls13compat_unittest.cc',
         'ssl_version_unittest.cc',
         'ssl_versionpolicy_unittest.cc',

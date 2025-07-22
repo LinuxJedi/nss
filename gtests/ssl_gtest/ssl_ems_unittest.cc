@@ -32,11 +32,13 @@ TEST_P(TlsConnectTls12, ConnectExtendedMasterSecretSha384) {
   ConnectWithCipherSuite(TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384);
 }
 
+/* wolfpkcs11 no static rsa support
 TEST_P(TlsConnectGenericPre13, ConnectExtendedMasterSecretStaticRSA) {
   EnableOnlyStaticRsaCiphers();
   EnableExtendedMasterSecret();
   Connect();
 }
+*/
 
 TEST_P(TlsConnectGenericPre13, ConnectExtendedMasterSecretECDHE) {
   EnableExtendedMasterSecret();
