@@ -795,7 +795,7 @@ TEST_F(TlsConnectTest, TestTls13ResumptionTwice) {
       MakeTlsFilter<TlsExtensionCapture>(client_, ssl_tls13_pre_shared_key_xtn);
   Connect();
   SendReceive();
-  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_curve25519, ssl_auth_rsa_sign,
+  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_secp256r1, ssl_auth_rsa_sign,
             ssl_sig_rsa_pss_rsae_sha256);
   // The filter will go away when we reset, so save the captured extension.
   DataBuffer initialTicket(c1->extension());
@@ -813,7 +813,7 @@ TEST_F(TlsConnectTest, TestTls13ResumptionTwice) {
   ExpectResumption(RESUME_TICKET);
   Connect();
   SendReceive();
-  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_curve25519, ssl_auth_rsa_sign,
+  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_secp256r1, ssl_auth_rsa_sign,
             ssl_sig_rsa_pss_rsae_sha256);
   ASSERT_LT(0U, c2->extension().len());
 
@@ -1148,7 +1148,7 @@ TEST_P(TlsConnectGenericResumption, ReConnectTicket) {
   server_->EnableSingleCipher(ChooseOneCipher(version_));
   Connect();
   SendReceive();
-  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_curve25519, ssl_auth_rsa_sign,
+  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_secp256r1, ssl_auth_rsa_sign,
             ssl_sig_rsa_pss_rsae_sha256);
   // Resume
   Reset();
@@ -1156,7 +1156,7 @@ TEST_P(TlsConnectGenericResumption, ReConnectTicket) {
   ExpectResumption(RESUME_TICKET);
   Connect();
   // Only the client knows this.
-  CheckKeysResumption(ssl_kea_ecdh, ssl_grp_none, ssl_grp_ec_curve25519,
+  CheckKeysResumption(ssl_kea_ecdh, ssl_grp_none, ssl_grp_ec_secp256r1,
                       ssl_auth_rsa_sign, ssl_sig_rsa_pss_rsae_sha256);
 }
 
@@ -1165,13 +1165,13 @@ TEST_P(TlsConnectGenericPre13, ReConnectCache) {
   server_->EnableSingleCipher(ChooseOneCipher(version_));
   Connect();
   SendReceive();
-  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_curve25519, ssl_auth_rsa_sign,
+  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_secp256r1, ssl_auth_rsa_sign,
             ssl_sig_rsa_pss_rsae_sha256);
   // Resume
   Reset();
   ExpectResumption(RESUME_SESSIONID);
   Connect();
-  CheckKeysResumption(ssl_kea_ecdh, ssl_grp_none, ssl_grp_ec_curve25519,
+  CheckKeysResumption(ssl_kea_ecdh, ssl_grp_none, ssl_grp_ec_secp256r1,
                       ssl_auth_rsa_sign, ssl_sig_rsa_pss_rsae_sha256);
 }
 
@@ -1180,7 +1180,7 @@ TEST_P(TlsConnectGenericResumption, ReConnectAgainTicket) {
   server_->EnableSingleCipher(ChooseOneCipher(version_));
   Connect();
   SendReceive();
-  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_curve25519, ssl_auth_rsa_sign,
+  CheckKeys(ssl_kea_ecdh, ssl_grp_ec_secp256r1, ssl_auth_rsa_sign,
             ssl_sig_rsa_pss_rsae_sha256);
   // Resume
   Reset();
@@ -1188,7 +1188,7 @@ TEST_P(TlsConnectGenericResumption, ReConnectAgainTicket) {
   ExpectResumption(RESUME_TICKET);
   Connect();
   // Only the client knows this.
-  CheckKeysResumption(ssl_kea_ecdh, ssl_grp_none, ssl_grp_ec_curve25519,
+  CheckKeysResumption(ssl_kea_ecdh, ssl_grp_none, ssl_grp_ec_secp256r1,
                       ssl_auth_rsa_sign, ssl_sig_rsa_pss_rsae_sha256);
   // Resume connection again
   Reset();
@@ -1196,7 +1196,7 @@ TEST_P(TlsConnectGenericResumption, ReConnectAgainTicket) {
   ExpectResumption(RESUME_TICKET, 2);
   Connect();
   // Only the client knows this.
-  CheckKeysResumption(ssl_kea_ecdh, ssl_grp_none, ssl_grp_ec_curve25519,
+  CheckKeysResumption(ssl_kea_ecdh, ssl_grp_none, ssl_grp_ec_secp256r1,
                       ssl_auth_rsa_sign, ssl_sig_rsa_pss_rsae_sha256);
 }
 
