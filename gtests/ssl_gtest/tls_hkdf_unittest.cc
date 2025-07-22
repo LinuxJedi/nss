@@ -198,6 +198,7 @@ class TlsHkdfTest : public ::testing::Test,
     ASSERT_NE(nullptr, secret);
     VerifyKey(ScopedPK11SymKey(secret), CKM_HKDF_DERIVE, expected);
 
+/* wolfpkcs11 no des3 support
     // Verify that a key can be created with a different key type and size.
     rv = SSL_HkdfExpandLabelWithMech(
         SSL_LIBRARY_VERSION_TLS_1_3, cs, prk->get(), session_hash,
@@ -213,6 +214,7 @@ class TlsHkdfTest : public ::testing::Test,
     SECItem* key_data = PK11_GetKeyData(with_mech.get());
     ASSERT_NE(nullptr, key_data);
     EXPECT_EQ(24U, key_data->len);
+*/
   }
 
  protected:
