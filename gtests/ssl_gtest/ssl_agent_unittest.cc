@@ -57,6 +57,7 @@ TEST_P(TlsAgentTest, EarlyCertificateVerify) {
                  SSL_ERROR_RX_UNEXPECTED_CERT_VERIFY);
 }
 
+/* Requires Curve25519
 TEST_P(TlsAgentTestClient13, CannedHello) {
   DataBuffer buffer;
   EnsureInit();
@@ -87,7 +88,6 @@ TEST_P(TlsAgentTestClient13, EncryptedExtensionsInClear) {
                  SSL_ERROR_RX_UNEXPECTED_HANDSHAKE);
 }
 
-/* Requires Curve25519
 TEST_F(TlsAgentStreamTestClient, EncryptedExtensionsInClearTwoPieces) {
   DataBuffer server_hello;
   auto sh = MakeCannedTls13ServerHello();
