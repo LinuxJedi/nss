@@ -18,6 +18,7 @@
 
 namespace nss_test {
 
+/* wolfpkcs no support
 TEST_P(TlsConnectStream, ServerNegotiateTls10) {
   uint16_t minver, maxver;
   client_->GetVersionRange(&minver, &maxver);
@@ -37,7 +38,7 @@ TEST_P(TlsConnectGeneric, ServerNegotiateTls11) {
                            SSL_LIBRARY_VERSION_TLS_1_1);
   Connect();
 }
-
+*/
 TEST_P(TlsConnectGeneric, ServerNegotiateTls12) {
   if (version_ < SSL_LIBRARY_VERSION_TLS_1_2) GTEST_SKIP();
 
