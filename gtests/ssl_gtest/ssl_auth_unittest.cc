@@ -1875,7 +1875,7 @@ TEST_F(TlsAgentStreamTestServer, ConfigureCertRsaPss) {
 // A server should refuse to even start a handshake with
 // misconfigured certificate and signature scheme.
 TEST_P(TlsConnectTls12Plus, MisconfiguredCertScheme) {
-  Reset(TlsAgent::kServerDsa);
+  Reset(TlsAgent::kRsa2048);
   static const SSLSignatureScheme kScheme[] = {ssl_sig_ecdsa_secp256r1_sha256};
   server_->SetSignatureSchemes(kScheme, PR_ARRAY_SIZE(kScheme));
   ConnectExpectAlert(server_, kTlsAlertHandshakeFailure);
