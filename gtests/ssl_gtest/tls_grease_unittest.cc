@@ -29,7 +29,7 @@ size_t countGreaseInBuffer(const DataBuffer& list) {
   }
   size_t occurrence = 0;
   for (uint16_t greaseVal : kTlsGreaseValues) {
-    for (size_t i = 0; i < (list.len() - 1); i += 2) {
+    for (size_t i = 0; i < (list.len() - 1); i += 1) {
       uint16_t sample = list.data()[i + 1] + (list.data()[i] << 8);
       if (greaseVal == sample) {
         occurrence++;
