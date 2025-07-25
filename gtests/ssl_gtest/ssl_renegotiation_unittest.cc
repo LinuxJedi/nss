@@ -68,6 +68,7 @@ TEST_F(TlsConnectTest, RenegotiationConfigTls13) {
   CheckKeys();
 }
 
+/* wolfpkcs11 no support
 TEST_P(TlsConnectStream, ConnectTls10AndServerRenegotiateHigher) {
   if (version_ == SSL_LIBRARY_VERSION_TLS_1_0) {
     GTEST_SKIP();
@@ -145,6 +146,7 @@ TEST_P(TlsConnectStream, ConnectTls10AndClientRenegotiateHigher) {
     server_->CheckErrorCode(SSL_ERROR_UNSUPPORTED_VERSION);
   }
 }
+*/
 
 TEST_P(TlsConnectStream, ConnectAndServerRenegotiateLower) {
   if (version_ == SSL_LIBRARY_VERSION_TLS_1_0) {
