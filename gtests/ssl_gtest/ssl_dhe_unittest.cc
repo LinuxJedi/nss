@@ -428,6 +428,7 @@ TEST_P(TlsConnectGenericPre13, PadDheP) {
 // commonly-supported named DH group and this connects.
 //
 // Note: This test case can take ages to generate the weak DH key.
+/* wolfPKCS unsupported (uses DSA param generation)
 TEST_P(TlsConnectGenericPre13, WeakDHGroup) {
   EnableOnlyDheCiphers();
   client_->SetOption(SSL_REQUIRE_DH_NAMED_GROUPS, PR_TRUE);
@@ -436,6 +437,7 @@ TEST_P(TlsConnectGenericPre13, WeakDHGroup) {
 
   Connect();
 }
+*/
 
 TEST_P(TlsConnectGeneric, Ffdhe3072) {
   EnableOnlyDheCiphers();
