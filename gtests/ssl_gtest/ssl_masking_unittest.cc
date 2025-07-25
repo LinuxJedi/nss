@@ -342,8 +342,10 @@ static const uint16_t kMaskingCiphersuites[] = {
 
 INSTANTIATE_TEST_SUITE_P(GenericMasking, SuiteTest, kMaskingCiphersuiteParams);
 
+/* chacha not supported in wolfpkcs
 INSTANTIATE_TEST_SUITE_P(GenericMasking, VariantTest,
                          TlsConnectTestBase::kTlsVariantsAll);
+*/
 
 INSTANTIATE_TEST_SUITE_P(GenericMasking, VariantSuiteTest,
                          ::testing::Combine(TlsConnectTestBase::kTlsVariantsAll,

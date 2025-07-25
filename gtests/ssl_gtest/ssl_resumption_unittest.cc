@@ -264,6 +264,7 @@ TEST_P(TlsConnectGenericPre13, ResumeWithHigherVersionTls13SessionId) {
   }
 }
 
+/* wolfpkcs no tls <1.2 support
 TEST_P(TlsConnectPre12, ResumeWithHigherVersionTls12) {
   uint16_t lower_version = version_;
   ConfigureSessionCache(RESUME_BOTH, RESUME_BOTH);
@@ -278,6 +279,7 @@ TEST_P(TlsConnectPre12, ResumeWithHigherVersionTls12) {
   ExpectResumption(RESUME_NONE);
   Connect();
 }
+*/
 
 TEST_P(TlsConnectGenericPre13, ResumeWithLowerVersionFromTls13) {
   uint16_t original_version = version_;
@@ -295,6 +297,7 @@ TEST_P(TlsConnectGenericPre13, ResumeWithLowerVersionFromTls13) {
   SendReceive();
 }
 
+/* wolfpkcs no tls <1.2 support
 TEST_P(TlsConnectPre12, ResumeWithLowerVersionFromTls12) {
   uint16_t original_version = version_;
   ConfigureSessionCache(RESUME_BOTH, RESUME_BOTH);
@@ -310,6 +313,7 @@ TEST_P(TlsConnectPre12, ResumeWithLowerVersionFromTls12) {
   Connect();
   SendReceive();
 }
+*/
 
 TEST_P(TlsConnectGeneric, ConnectResumeClientBothTicketServerTicketForget) {
   // This causes a ticket resumption.

@@ -723,6 +723,7 @@ TEST_P(TlsConnectTls12, ConnectSigAlgDisabledByPolicyDhe) {
   CheckSkeSigScheme(capture_ske, ssl_sig_rsa_pkcs1_sha384);
 }
 
+/* wolfpkcs no tls <1.2 support
 TEST_P(TlsConnectPre12, ConnectSigAlgDisabledWeakGroupByOption3072DhePre12) {
   EnableOnlyDheCiphers();
 
@@ -774,6 +775,7 @@ TEST_P(TlsConnectPre12, ConnectSigAlgDisabledByPolicyDhePre12) {
 
   server_->CheckErrorCode(SSL_ERROR_UNSUPPORTED_HASH_ALGORITHM);
 }
+*/
 
 TEST_P(TlsConnectTls12, ConnectSigAlgDisablePreferredGroupByOption3072Dhe) {
   EnableOnlyDheCiphers();

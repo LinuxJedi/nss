@@ -464,6 +464,7 @@ class SecurityStatusTest
 // SSL_SecurityStatus produces fairly useless output when compared to
 // SSL_GetCipherSuiteInfo and SSL_GetChannelInfo, but we can't break it, so we
 // need to check it.
+/* wolfpkcs11: no support
 TEST_P(SecurityStatusTest, CheckSecurityStatus) {
   SetupCertificate();
   EnableSingleCipher();
@@ -495,7 +496,6 @@ TEST_P(SecurityStatusTest, CheckSecurityStatus) {
   PORT_Free(subject);
 }
 
-/* wolfpkcs11: no support
 static const SecStatusParams kSecStatusTestValuesArr[] = {
     {SSL_LIBRARY_VERSION_TLS_1_0, TLS_ECDHE_RSA_WITH_NULL_SHA, "NULL", 0},
     {SSL_LIBRARY_VERSION_TLS_1_0, TLS_RSA_WITH_RC4_128_SHA, "RC4", 128},

@@ -231,7 +231,9 @@ INSTANTIATE_TEST_SUITE_P(
     ::testing::Combine(TlsAgentTestBase::kTlsRolesAll,
                        TlsConnectTestBase::kTlsVariantsStream,
                        TlsConnectTestBase::kTlsVAll));
+/* Requires Curve25519
 INSTANTIATE_TEST_SUITE_P(ClientTests13, TlsAgentTestClient13,
                          ::testing::Combine(TlsConnectTestBase::kTlsVariantsAll,
                                             TlsConnectTestBase::kTlsV13));
+*/
 }  // namespace nss_test

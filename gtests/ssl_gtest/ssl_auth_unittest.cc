@@ -60,6 +60,7 @@ TEST_P(TlsConnectTls12Plus, ServerAuthRsaPss) {
 }
 
 // PSS doesn't work with TLS 1.0 or 1.1 because we can't signal it.
+/* wolfpkcs no tls <1.2 support
 TEST_P(TlsConnectPre12, ServerAuthRsaPssFails) {
   static const SSLSignatureScheme kSignatureSchemePss[] = {
       ssl_sig_rsa_pss_pss_sha256};
@@ -73,6 +74,7 @@ TEST_P(TlsConnectPre12, ServerAuthRsaPssFails) {
   server_->CheckErrorCode(SSL_ERROR_NO_CYPHER_OVERLAP);
   client_->CheckErrorCode(SSL_ERROR_NO_CYPHER_OVERLAP);
 }
+*/
 
 // Check that a PSS certificate with no parameters works.
 TEST_P(TlsConnectTls12Plus, ServerAuthRsaPssNoParameters) {
@@ -1421,6 +1423,7 @@ TEST_P(TlsConnectTls12Plus, SignatureAlgorithmNoOverlapEcdsa) {
 }
 
 // Pre 1.2, a mismatch on signature algorithms shouldn't affect anything.
+/* wolfpkcs no tls <1.2 support
 TEST_P(TlsConnectPre12, SignatureAlgorithmNoOverlapEcdsa) {
   Reset(TlsAgent::kServerEcdsa256);
   client_->SetSignatureSchemes(kSignatureSchemeEcdsaSha384,
@@ -1429,6 +1432,7 @@ TEST_P(TlsConnectPre12, SignatureAlgorithmNoOverlapEcdsa) {
                                PR_ARRAY_SIZE(kSignatureSchemeEcdsaSha256));
   Connect();
 }
+*/
 
 // The signature_algorithms extension is mandatory in TLS 1.3.
 TEST_P(TlsConnectTls13, SignatureAlgorithmDrop) {
