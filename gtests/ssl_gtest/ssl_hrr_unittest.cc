@@ -952,16 +952,16 @@ class TlsKeyExchange13 : public TlsKeyExchangeTest {};
 TEST_P(TlsKeyExchange13, ConnectEcdhePreferenceMismatchHrr) {
   EnsureKeyShareSetup();
   static const std::vector<SSLNamedGroup> client_groups = {
-      ssl_grp_ec_secp384r1, ssl_grp_ec_curve25519};
+      ssl_grp_ec_secp384r1, ssl_grp_ec_secp256r1};
   static const std::vector<SSLNamedGroup> server_groups = {
-      ssl_grp_ec_curve25519, ssl_grp_ec_secp384r1};
+      ssl_grp_ec_secp256r1, ssl_grp_ec_secp384r1};
   client_->ConfigNamedGroups(client_groups);
   server_->ConfigNamedGroups(server_groups);
   Connect();
   CheckKeys();
   static const std::vector<SSLNamedGroup> expectedShares = {
       ssl_grp_ec_secp384r1};
-  CheckKEXDetails(client_groups, expectedShares, ssl_grp_ec_curve25519);
+  CheckKEXDetails(client_groups, expectedShares, ssl_grp_ec_secp256r1);
 }
 
 /*
@@ -999,9 +999,9 @@ TEST_P(TlsKeyExchange13, SecondClientHelloPreambleMatches) {
 TEST_P(TlsKeyExchange13, ConnectEcdhePreferenceMismatchHrrExtraShares) {
   EnsureKeyShareSetup();
   static const std::vector<SSLNamedGroup> client_groups = {
-      ssl_grp_ec_secp384r1, ssl_grp_ec_curve25519};
+      ssl_grp_ec_secp384r1, ssl_grp_ec_secp256r1};
   static const std::vector<SSLNamedGroup> server_groups = {
-      ssl_grp_ec_curve25519, ssl_grp_ec_secp384r1};
+          ssl_grp_ec_secp256r1, ssl_grp_ec_secp384r1};
   client_->ConfigNamedGroups(client_groups);
   server_->ConfigNamedGroups(server_groups);
   EXPECT_EQ(SECSuccess, SSL_SendAdditionalKeyShares(client_->ssl_fd(), 1));
