@@ -954,6 +954,7 @@ TEST_P(TlsConnectClientAuth, ClientAuthEcdsa) {
   CheckKeys(ssl_kea_ecdh, ssl_auth_ecdsa);
 }
 
+/* wolfpkcs11 no ech support
 TEST_P(TlsConnectClientAuth, ClientAuthWithEch) {
   if (variant_ == ssl_variant_datagram) {
     GTEST_SKIP();
@@ -966,6 +967,7 @@ TEST_P(TlsConnectClientAuth, ClientAuthWithEch) {
   Connect();
   CheckKeys(ssl_kea_ecdh, ssl_auth_ecdsa);
 }
+*/
 
 TEST_P(TlsConnectClientAuth, ClientAuthBigRsa) {
   Reset(TlsAgent::kServerRsa, TlsAgent::kRsa2048);
