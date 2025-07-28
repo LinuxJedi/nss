@@ -268,6 +268,7 @@ TEST_P(TlsConnectTls13, DropSupportedGroupExtension) {
   server_->CheckErrorCode(SSL_ERROR_MISSING_SUPPORTED_GROUPS_EXTENSION);
 }
 
+/* wolfpkcs11 no static rsa support
 // If we only have a lame group, we fall back to static RSA.
 TEST_P(TlsConnectGenericPre13, UseLameGroup) {
   const std::vector<SSLNamedGroup> groups = {ssl_grp_ec_secp192r1};
@@ -276,6 +277,7 @@ TEST_P(TlsConnectGenericPre13, UseLameGroup) {
   Connect();
   CheckKeys(ssl_kea_rsa, ssl_grp_none, ssl_auth_rsa_decrypt, ssl_sig_none);
 }
+*/
 
 // In TLS 1.3, we can't generate the ClientHello.
 TEST_P(TlsConnectTls13, UseLameGroup) {
