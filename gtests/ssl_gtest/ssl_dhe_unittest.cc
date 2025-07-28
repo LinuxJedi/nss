@@ -608,7 +608,7 @@ class TlsDheSkeChangeSignature : public TlsHandshakeFilter {
 
     if (version_ == SSL_LIBRARY_VERSION_TLS_1_2) {
       // Write signature algorithm.
-      offset = output->Write(offset, ssl_sig_dsa_sha256, 2);
+      offset = output->Write(offset, ssl_sig_rsa_pkcs1_sha256, 2);
     }
 
     // Write new signature.
@@ -633,7 +633,7 @@ TEST_P(TlsConnectGenericPre13, InvalidDERSignatureFfdhe) {
       0x6d, 0xdc, 0xb8, 0x21, 0x87, 0xdd, 0x0d, 0xb9, 0x46, 0x09, 0x3e,
       0xef, 0x81, 0x5b, 0x37, 0x09, 0x39, 0xeb};
 
-  Reset(TlsAgent::kServerDsa);
+  Reset(TlsAgent::kRsa2048);
 
   const std::vector<SSLNamedGroup> client_groups = {ssl_grp_ffdhe_2048};
   client_->ConfigNamedGroups(client_groups);
@@ -642,7 +642,7 @@ TEST_P(TlsConnectGenericPre13, InvalidDERSignatureFfdhe) {
                                           sizeof(kBogusDheSignature));
 
   ConnectExpectAlert(client_, kTlsAlertDecryptError);
-  client_->CheckErrorCode(SSL_ERROR_BAD_HANDSHAKE_HASH_VALUE);
+  client_->CheckErrorCode(SEC_ERROR_BAD_SIGNATURE);
 }
 
 TEST_P(TlsConnectTls12, ConnectInconsistentSigAlgDHE) {
