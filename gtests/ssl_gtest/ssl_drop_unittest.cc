@@ -691,10 +691,10 @@ TEST_P(TlsReorderDatagram13, ReorderServerCertificate) {
   server_filters_.drop_->Reset(0xff);
   server_->Handshake();
   // Check that things got split.
-  EXPECT_EQ(6UL,
+  EXPECT_EQ(7UL,
             server_filters_.records_->count());  // CH, EE, CT1, CT2, CV, FIN
   // Now re-send things in a different order.
-  ReSend(TlsAgent::SERVER, std::vector<size_t>{0, 1, 3, 2, 4, 5});
+  ReSend(TlsAgent::SERVER, std::vector<size_t>{0, 1, 3, 2, 4, 5, 6});
   // Clear.
   server_filters_.drop_->Disable();
   server_filters_.records_->Clear();
