@@ -110,9 +110,9 @@ class TlsExtensionTestBase : public TlsConnectTestBase {
   void HrrThenRemoveExtensionsTest(SSLExtensionType type, PRInt32 client_error,
                                    PRInt32 server_error) {
     static const std::vector<SSLNamedGroup> client_groups = {
-        ssl_grp_ec_secp384r1, ssl_grp_ec_curve25519};
+        ssl_grp_ec_secp384r1, ssl_grp_ec_secp256r1};
     static const std::vector<SSLNamedGroup> server_groups = {
-        ssl_grp_ec_curve25519, ssl_grp_ec_secp384r1};
+        ssl_grp_ec_secp256r1, ssl_grp_ec_secp384r1};
     client_->ConfigNamedGroups(client_groups);
     server_->ConfigNamedGroups(server_groups);
     EnsureTlsSetup();
@@ -503,6 +503,7 @@ TEST_P(TlsExtensionTestGeneric, SupportedCurvesTrailingData) {
       client_, ssl_elliptic_curves_xtn, extension));
 }
 
+/* wolfpkcs11 no 25519 support
 TEST_P(TlsExtensionTest12, SupportedCurvesDisableX25519) {
   // Disable session resumption.
   ConfigureSessionCache(RESUME_NONE, RESUME_NONE);
@@ -569,6 +570,7 @@ TEST_P(TlsExtensionTest12, SupportedCurvesDisableX25519) {
 
   ASSERT_FALSE(seen2_x25519);
 }
+*/
 
 TEST_P(TlsExtensionTestPre13, SupportedPointsEmpty) {
   const uint8_t val[] = {0x00};
