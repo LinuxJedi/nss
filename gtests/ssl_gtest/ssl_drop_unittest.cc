@@ -304,14 +304,14 @@ TEST_P(TlsDropDatagram13, DropFirstHalfOfServerCertificate) {
   client_->Handshake();
   server_->Handshake();
   // Check that things got split.
-  EXPECT_EQ(6UL,
+  EXPECT_EQ(7UL,
             server_filters_.records_->count());  // SH, EE, CT1, CT2, CV, FIN
   size_t ct1_size = server_filters_.record(2).buffer.len();
   server_filters_.records_->Clear();
   expected_client_acks_ = 1;
   HandshakeAndAck(client_);
   server_->Handshake();                               // Retransmit
-  EXPECT_EQ(3UL, server_filters_.records_->count());  // CT2, CV, FIN
+  EXPECT_EQ(4UL, server_filters_.records_->count());  // CT2, CV, FIN
   // Check that the first record is CT1 (which is identical to the same
   // as the previous CT1).
   EXPECT_EQ(ct1_size, server_filters_.record(0).buffer.len());
@@ -331,14 +331,14 @@ TEST_P(TlsDropDatagram13, DropSecondHalfOfServerCertificate) {
   client_->Handshake();
   server_->Handshake();
   // Check that things got split.
-  EXPECT_EQ(6UL,
+  EXPECT_EQ(7UL,
             server_filters_.records_->count());  // SH, EE, CT1, CT2, CV, FIN
   size_t ct1_size = server_filters_.record(3).buffer.len();
   server_filters_.records_->Clear();
   expected_client_acks_ = 1;
   HandshakeAndAck(client_);
   server_->Handshake();                               // Retransmit
-  EXPECT_EQ(3UL, server_filters_.records_->count());  // CT1, CV, FIN
+  EXPECT_EQ(4UL, server_filters_.records_->count());  // CT1, CV, FIN
   // Check that the first record is CT1
   EXPECT_EQ(ct1_size, server_filters_.record(0).buffer.len());
   CheckedHandshakeSendReceive();
