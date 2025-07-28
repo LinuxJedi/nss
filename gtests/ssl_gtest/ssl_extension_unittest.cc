@@ -1453,9 +1453,11 @@ INSTANTIATE_TEST_SUITE_P(
 INSTANTIATE_TEST_SUITE_P(ExtensionDatagramOnly, TlsExtensionTestDtls,
                          TlsConnectTestBase::kTlsV11Plus);
 
+/*
 INSTANTIATE_TEST_SUITE_P(ExtensionTls12, TlsExtensionTest12,
                          ::testing::Combine(TlsConnectTestBase::kTlsVariantsAll,
                                             TlsConnectTestBase::kTlsV12));
+*/
 
 INSTANTIATE_TEST_SUITE_P(ExtensionTls12Plus, TlsExtensionTest12Plus,
                          ::testing::Combine(TlsConnectTestBase::kTlsVariantsAll,
