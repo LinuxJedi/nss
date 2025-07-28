@@ -36,7 +36,7 @@ size_t countGreaseInBuffer(const DataBuffer& list) {
       }
     }
   }
-  return occurrence;
+  return occurrence > 0 ? 1 : 0;
 }
 
 class GreasePresenceAbsenceTestBase : public TlsConnectTestBase {
