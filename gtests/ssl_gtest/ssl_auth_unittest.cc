@@ -1897,8 +1897,8 @@ TEST_P(TlsConnectTls12Plus, MisconfiguredCertScheme) {
 // In TLS 1.2, disabling an EC group causes ECDSA to be invalid.
 TEST_P(TlsConnectTls12, Tls12CertDisabledGroup) {
   Reset(TlsAgent::kServerEcdsa256);
-  static const std::vector<SSLNamedGroup> k25519 = {ssl_grp_ec_secp256r1};
-  server_->ConfigNamedGroups(k25519);
+  static const std::vector<SSLNamedGroup> p384 = {ssl_grp_ec_secp384r1};
+  server_->ConfigNamedGroups(p384);
   ConnectExpectAlert(server_, kTlsAlertHandshakeFailure);
   server_->CheckErrorCode(SSL_ERROR_NO_CYPHER_OVERLAP);
   client_->CheckErrorCode(SSL_ERROR_NO_CYPHER_OVERLAP);
