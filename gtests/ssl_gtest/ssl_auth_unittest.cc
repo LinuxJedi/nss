@@ -1307,8 +1307,10 @@ static const SSLSignatureScheme kSignatureSchemeEcdsaSha256[] = {
     ssl_sig_ecdsa_secp256r1_sha256};
 static const SSLSignatureScheme kSignatureSchemeRsaSha384[] = {
     ssl_sig_rsa_pkcs1_sha384};
+/* wolfpkcs11 no static rsa support
 static const SSLSignatureScheme kSignatureSchemeRsaSha256[] = {
     ssl_sig_rsa_pkcs1_sha256};
+*/
 
 static SSLNamedGroup NamedGroupForEcdsa384(uint16_t version) {
   // NSS tries to match the group size to the symmetric cipher. In TLS 1.1 and
